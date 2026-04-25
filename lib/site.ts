@@ -110,7 +110,6 @@ export const site = {
       "The clearest example: my cousin Daniel. He'd never sold anything in his life when he joined the company. I trained him on the exact same system, and he finished #2 every single month, directly behind me.",
       "If the system works on someone with zero prior sales experience, it'll work in your business — as it has for the businesses below.",
     ],
-    cta: "Book a Call",
   },
 
   caseStudies: {
@@ -127,7 +126,7 @@ export const site = {
   },
 
   finalCta: {
-    title: "Book an Advisory Call",
+    title: "Book an Advisory Session",
     tagline: "Proven Formula. Proven Results.",
     body: "Copy and paste the #1 solar sales system directly into your business.",
   },

@@ -10,6 +10,7 @@ type Props = {
 
 export default function Screenshot({ src, alt, caption }: Props) {
   const [open, setOpen] = useState(false);
+  const [errored, setErrored] = useState(false);
 
   useEffect(() => {
     if (!open) return;
@@ -24,7 +25,7 @@ export default function Screenshot({ src, alt, caption }: Props) {
     };
   }, [open]);
 
-  if (!src) {
+  if (!src || errored) {
     return (
       <figure className="group">
         <div className="flex aspect-[16/10] items-center justify-center rounded-lg border border-border bg-surface text-sm text-muted">
@@ -49,6 +50,7 @@ export default function Screenshot({ src, alt, caption }: Props) {
             src={src}
             alt={alt}
             loading="lazy"
+            onError={() => setErrored(true)}
             className="h-auto w-full transition group-hover:scale-[1.01]"
           />
         </button>

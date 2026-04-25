@@ -1,7 +1,7 @@
 import { site } from "@/lib/site";
 
 export default function Receipts() {
-  const { header, paragraphs, cta } = site.receipts;
+  const { header, paragraphs } = site.receipts;
 
   return (
     <section className="section border-t border-border/50">
@@ -13,14 +13,6 @@ export default function Receipts() {
               <p key={i} className="body-lg">{p}</p>
             ))}
           </div>
-        </div>
-        <div className="mt-12 flex justify-center">
-          <a
-            href={site.bookingUrl}
-            className="btn-primary-lg plausible-event-name=cta_click plausible-event-position=receipts"
-          >
-            {cta}
-          </a>
         </div>
       </div>
     </section>
