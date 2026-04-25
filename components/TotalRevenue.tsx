@@ -12,7 +12,7 @@ export default function TotalRevenue() {
           <p className="mt-6 body-lg">{body}</p>
         </div>
         <div className="mx-auto mt-10 max-w-3xl">
-          <Screenshot src={screenshot.src} alt={screenshot.alt} />
+          <Screenshot src={screenshot.src} alt={screenshot.alt} caption={screenshot.caption} />
         </div>
       </div>
     </section>

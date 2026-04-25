@@ -77,7 +77,7 @@ export const site = {
         screenshots: <ScreenshotEntry[]>[
           { src: "/proof/nov-1.png", alt: "November — record-breaking week ending 16/11/2025", caption: "Week ending 16/11/2025 — all-time company weekly sales record (15 sales · 182.16 kW)" },
           { src: "/proof/nov-2.png", alt: "November — weekly snapshot", caption: "Weekly results — November" },
-          { src: "/proof/nov-3.png", alt: "November — weekly snapshot", caption: "Weekly results — November" },
+          { src: "/proof/nov-3.png", alt: "November — week ending 23/11/2025", caption: "Week ending 23/11/2025" },
           { src: "/proof/nov-4.png", alt: "November — monthly total sales (Jesse 38, Daniel 34)" },
           { src: "/proof/nov-5.png", alt: "November — monthly close rates (Jesse 58%, Dan 48%)" },
         ],
@@ -87,10 +87,9 @@ export const site = {
         medals: "$10,000 sales competition won. #1 Salesperson in the Company award.",
         body: "The company was off for half of December over the holiday period, so there were no weekly or monthly meetings, though December is when the awards came in.\n\nI was presented with the #1 Salesperson in the Company award and the $10,000 bonus for winning the company-wide sales competition. I split the bonus 50/50 with Daniel, who finished second. Daniel also won Fastest-Growing Sales Rep after having no prior sales experience 2 months earlier, a testament to this systems effectiveness.\n\nBelow: the sales competition details, the award presentation, and Daniel receiving his award.",
         screenshots: <ScreenshotEntry[]>[
-          { src: "", alt: "December — sales competition details" },
-          { src: "", alt: "December — award presentation" },
-          { src: "", alt: "December — #1 salesperson award" },
-          { src: "", alt: "December — Daniel's award" },
+          { src: "/proof/dec-1.png", alt: "December — $10,000 sales competition details", caption: "Winner-take-all sales competition · $10,000 prize" },
+          { src: "/proof/dec-2.png", alt: "December — #1 Salesperson in the Company award presentation" },
+          { src: "/proof/dec-3.png", alt: "December — Daniel receiving Fastest-Growing Sales Rep award" },
         ],
       },
     ],
@@ -99,7 +98,7 @@ export const site = {
   totalRevenue: {
     header: "Total Revenue Closed",
     body: "Below is my personal deal tracker showing total cash collected during my time at the company — over $3.5M in personally closed revenue.",
-    screenshot: { src: "", alt: "Personal deal tracker — total cash collected" },
+    screenshot: { src: "/proof/revenue.png", alt: "Personal deal tracker — total cash collected: $3,526,791.50", caption: "Personal deal tracker · $3,526,791.50 in cash collected" },
   },
 
   receipts: {
