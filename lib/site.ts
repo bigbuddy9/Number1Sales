@@ -38,10 +38,10 @@ export const site = {
         medals: "🥇 Total Sales · 🥇 Close Rate · 🥇 Total kW Sold",
         body: "Started a week into August. Still finished #1 across every company metric. In the final week of the month, became the first rep in company history to cross the 100kW mark for total solar kW sold in a single week.",
         screenshots: <ScreenshotEntry[]>[
-          { src: "/proof/aug-total-sales.png", alt: "August — monthly total sales (Jesse #1)" },
-          { src: "/proof/aug-close-rate.png", alt: "August — monthly close rates (Jesse 49%)" },
-          { src: "/proof/aug-system-size.png", alt: "August — monthly sum of system size (Jesse 230.12 kW)" },
-          { src: "/proof/aug-week-31.png", alt: "August — week ending 31/08/2025: first solo 100kW week", caption: "Week ending 31/08/2025 — 108.24 kW sold solo, a company first" },
+          { src: "/proof/aug-total-sales.jpg", alt: "August — monthly total sales (Jesse #1)" },
+          { src: "/proof/aug-close-rate.jpg", alt: "August — monthly close rates (Jesse 49%)" },
+          { src: "/proof/aug-system-size.jpg", alt: "August — monthly sum of system size (Jesse 230.12 kW)" },
+          { src: "/proof/aug-week-31.jpg", alt: "August — weekly snapshot" },
         ],
       },
       {
@@ -49,11 +49,11 @@ export const site = {
         medals: "🥇 Total Sales · 🥇 Close Rate · 🥇 Total kW Sold",
         body: "Second month — #1 in every trackable company metric. Screenshots below show the monthly results plus snapshots from two weekly meetings.",
         screenshots: <ScreenshotEntry[]>[
-          { src: "/proof/sep-total-sales.png", alt: "September — monthly total sales (Jesse 25)" },
-          { src: "/proof/sep-close-rate.png", alt: "September — monthly close rates (Jesse 49%)" },
-          { src: "/proof/sep-system-size.png", alt: "September — monthly sum of system size (Jesse 274.56 kW)" },
-          { src: "/proof/sep-week-07.png", alt: "September — week ending 07/09/2025", caption: "Week ending 07/09/2025" },
-          { src: "/proof/sep-week-21.png", alt: "September — week ending 21/09/2025", caption: "Week ending 21/09/2025" },
+          { src: "/proof/sep-total-sales.jpg", alt: "September — monthly total sales (Jesse 25)" },
+          { src: "/proof/sep-close-rate.jpg", alt: "September — monthly close rates (Jesse 49%)" },
+          { src: "/proof/sep-system-size.jpg", alt: "September — monthly sum of system size (Jesse 274.56 kW)" },
+          { src: "/proof/sep-week-07.jpg", alt: "September — weekly snapshot" },
+          { src: "/proof/sep-week-21.jpg", alt: "September — weekly snapshot" },
         ],
       },
       {
@@ -61,12 +61,12 @@ export const site = {
         medals: "🥇 Total Sales · 🥈 Close Rate · 🥇 Total kW Sold",
         body: "#1 across every metric except close rate. Worth flagging: one rep had switched to in-home appointments while the rest of us were on virtual, which structurally lifts close rate.\n\nThis was also the month my cousin Daniel joined the company. Never sold anything in his life — first sales role ever. I trained him on my full process: scripts, frameworks, meeting recordings, the whole system. He finished #2 in the company in his first month, behind me.",
         screenshots: <ScreenshotEntry[]>[
-          { src: "/proof/oct-total-sales.png", alt: "October — monthly total sales (Jesse #1, Daniel #2)" },
-          { src: "/proof/oct-close-rate.png", alt: "October — monthly close rates" },
-          { src: "/proof/oct-system-size.png", alt: "October — monthly sum of system size (Jesse 237.6 kW)" },
-          { src: "/proof/oct-week-05.png", alt: "October — week ending 05/10/2025", caption: "Week ending 05/10/2025" },
-          { src: "/proof/oct-week-12.png", alt: "October — week ending 12/10/2025", caption: "Week ending 12/10/2025" },
-          { src: "/proof/oct-week-19.png", alt: "October — week ending 19/10/2025", caption: "Week ending 19/10/2025" },
+          { src: "/proof/oct-total-sales.jpg", alt: "October — monthly total sales (Jesse #1, Daniel #2)" },
+          { src: "/proof/oct-close-rate.jpg", alt: "October — monthly close rates" },
+          { src: "/proof/oct-system-size.jpg", alt: "October — monthly sum of system size (Jesse 237.6 kW)" },
+          { src: "/proof/oct-week-05.jpg", alt: "October — weekly snapshot" },
+          { src: "/proof/oct-week-12.jpg", alt: "October — weekly snapshot" },
+          { src: "/proof/oct-week-19.jpg", alt: "October — weekly snapshot" },
         ],
       },
       {
@@ -75,11 +75,11 @@ export const site = {
         highlight: "National weekly and monthly sales records broken.",
         body: "Broke the company's all-time weekly sales record. Then broke the all-time monthly record — same month. #1 across every trackable metric. Daniel finished #2 across every metric again, in his second month.\n\nScreenshots below show the record-breaking week, two other weekly snapshots, and the full monthly results.",
         screenshots: <ScreenshotEntry[]>[
-          { src: "/proof/nov-total-sales.png", alt: "November — monthly total sales (Jesse 38, Daniel 34)" },
-          { src: "/proof/nov-close-rate.png", alt: "November — monthly close rates (Jesse 58%, Dan 48%)" },
-          { src: "/proof/nov-week-1.png", alt: "November — weekly snapshot", caption: "Weekly results — November" },
-          { src: "/proof/nov-week-16.png", alt: "November — record-breaking week ending 16/11/2025", caption: "Week ending 16/11/2025 — all-time company weekly sales record (15 sales · 182.16 kW)" },
-          { src: "/proof/nov-week-23.png", alt: "November — week ending 23/11/2025", caption: "Week ending 23/11/2025" },
+          { src: "/proof/nov-total-sales.jpg", alt: "November — monthly total sales (Jesse 38, Daniel 34)" },
+          { src: "/proof/nov-close-rate.jpg", alt: "November — monthly close rates (Jesse 58%, Dan 48%)" },
+          { src: "/proof/nov-week-16.jpg", alt: "November — record-breaking weekly snapshot", caption: "All-time company weekly sales record · 15 sales · 182.16 kW" },
+          { src: "/proof/nov-week-23.jpg", alt: "November — weekly snapshot" },
+          { src: "/proof/nov-week-1.jpg", alt: "November — weekly snapshot" },
         ],
       },
       {
@@ -87,9 +87,9 @@ export const site = {
         medals: "$10,000 sales competition won. #1 Salesperson in the Company award.",
         body: "The company was off for half of December over the holiday period, so there were no weekly or monthly meetings, though December is when the awards came in.\n\nI was presented with the #1 Salesperson in the Company award and the $10,000 bonus for winning the company-wide sales competition. I split the bonus 50/50 with Daniel, who finished second. Daniel also won Fastest-Growing Sales Rep after having no prior sales experience 2 months earlier, a testament to this systems effectiveness.\n\nBelow: the sales competition details, the award presentation, and Daniel receiving his award.",
         screenshots: <ScreenshotEntry[]>[
-          { src: "/proof/dec-competition.png", alt: "December — $10,000 sales competition details", caption: "Winner-take-all sales competition · $10,000 prize" },
-          { src: "/proof/dec-jesse-award.png", alt: "December — #1 Salesperson in the Company award presentation" },
-          { src: "/proof/dec-daniel-award.png", alt: "December — Daniel receiving Fastest-Growing Sales Rep award" },
+          { src: "/proof/dec-competition.jpg", alt: "December — $10,000 sales competition details" },
+          { src: "/proof/dec-jesse-award.jpg", alt: "December — #1 Salesperson in the Company award presentation" },
+          { src: "/proof/dec-daniel-award.jpg", alt: "December — Daniel receiving Fastest-Growing Sales Rep award" },
         ],
       },
     ],
@@ -98,7 +98,7 @@ export const site = {
   totalRevenue: {
     header: "Total Revenue Closed",
     body: "Below is my personal deal tracker showing total cash collected during my time at the company — over $3.5M in personally closed revenue.",
-    screenshot: { src: "/proof/revenue.png", alt: "Personal deal tracker — total cash collected: $3,526,791.50", caption: "Personal deal tracker · $3,526,791.50 in cash collected" },
+    screenshot: { src: "/proof/revenue.jpg", alt: "Personal deal tracker — total cash collected: $3,526,791.50", caption: "Personal deal tracker · $3,526,791.50 in cash collected" },
   },
 
   receipts: {
