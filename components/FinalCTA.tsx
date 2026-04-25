@@ -1,22 +1,19 @@
 import { site } from "@/lib/site";
+import CalEmbed from "./CalEmbed";
 
 export default function FinalCTA() {
-  const { header, body, cta } = site.finalCta;
+  const { title, tagline, body } = site.finalCta;
 
   return (
     <section className="section border-t border-border/50">
       <div className="container-x">
         <div className="prose-x text-center">
-          <h2 className="h2">{header}</h2>
-          <p className="mt-6 body-lg">{body}</p>
+          <h2 className="h2">{title}</h2>
+          <p className="mt-4 text-base font-semibold text-accent md:text-lg">{tagline}</p>
+          <p className="mt-4 body-lg">{body}</p>
         </div>
-        <div className="mt-10 flex justify-center">
-          <a
-            href={site.bookingUrl}
-            className="btn-primary-lg plausible-event-name=cta_click plausible-event-position=final"
-          >
-            {cta}
-          </a>
+        <div className="mx-auto mt-10 w-full max-w-3xl">
+          <CalEmbed calLink={site.calLink} namespace="final" />
         </div>
       </div>
     </section>

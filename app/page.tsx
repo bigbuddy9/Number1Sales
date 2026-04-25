@@ -1,4 +1,3 @@
-import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
 import Proof from "@/components/Proof";
 import TotalRevenue from "@/components/TotalRevenue";
@@ -10,7 +9,6 @@ import Footer from "@/components/Footer";
 export default function Page() {
   return (
     <>
-      <Nav />
       <main>
         <Hero />
         <Proof />

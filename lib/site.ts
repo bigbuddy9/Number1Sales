@@ -4,6 +4,9 @@ export const site = {
   brand: "Number 1 Sales",
   domain: "number1sales.com",
   bookingUrl: "https://cal.com/number1sales",
+  // Used by the inline Cal.com embeds (under hero + final CTA).
+  // Format: "username" or "username/event-slug".
+  calLink: "number1sales",
   // Plausible domain — leave as the production domain. Script is injected
   // unconditionally; if no Plausible account exists for this domain yet,
   // the requests are silently dropped. Add the domain at plausible.io when ready.
@@ -22,7 +25,7 @@ export const site = {
   },
 
   proof: {
-    header: "RESINC Sales Results 💎",
+    header: "Recent Sales Results 💎",
     intro:
       "Direct evidence from company-wide sales meetings during my time at RESINC Solar — the #1 solar company in Australia. I worked there from August 2025 to January 2026 before launching Number 1 Sales.",
     introTwo:
@@ -123,9 +126,9 @@ export const site = {
   },
 
   finalCta: {
-    header: "Ready to install the system?",
-    body: "20 minutes. No pitch, no pressure. We'll diagnose where your sales process is leaking and I'll show you exactly what the system would change.",
-    cta: "Book a Call",
+    title: "Book an Advisory Call",
+    tagline: "Proven Formula. Proven Results.",
+    body: "Copy and paste the #1 solar sales system directly into your business.",
   },
 
   footer: {

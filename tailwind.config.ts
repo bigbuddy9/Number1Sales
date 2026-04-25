@@ -15,9 +15,10 @@ const config: Config = {
         ink: "#FFFFFF",
         muted: "#A1A1AA",
         mutedHi: "#D4D4D8",
-        accent: "#10B981",
-        accentHover: "#34D399",
-        accentInk: "#02160F",
+        accent: "#D4AF37",
+        accentHover: "#E8C25A",
+        accentSoft: "#F2D982",
+        accentInk: "#1A1300",
       },
       fontFamily: {
         sans: ["Inter", "ui-sans-serif", "system-ui", "-apple-system", "Segoe UI", "sans-serif"],
