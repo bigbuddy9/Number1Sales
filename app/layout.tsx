@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { site } from "@/lib/site";
+import { LightboxProvider } from "@/components/Lightbox";
 
 export const metadata: Metadata = {
   title: `${site.brand} — ${site.hero.h1}`,
@@ -39,7 +40,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           src="https://plausible.io/js/script.tagged-events.outbound-links.js"
         />
       </head>
-      <body>{children}</body>
+      <body>
+        <LightboxProvider>{children}</LightboxProvider>
+      </body>
     </html>
   );
 }

@@ -2,7 +2,14 @@ import { site } from "@/lib/site";
 import Screenshot from "./Screenshot";
 
 export default function Proof() {
-  const { header, intro, introTwo, months } = site.proof;
+  const { header, intro, introTwo, months, summary } = site.proof;
+
+  const allImages = [
+    ...months.flatMap((m) => m.screenshots),
+    ...(summary ? [summary.screenshot] : []),
+  ].map((s) => ({ src: s.src, alt: s.alt }));
+
+  let imgIdx = 0;
 
   return (
     <section id="proof" className="section border-t border-border/50">
@@ -13,7 +20,7 @@ export default function Proof() {
           <p className="mt-4 body-lg">{introTwo}</p>
         </header>
 
-        <div className="mt-20 space-y-20 md:mt-24 md:space-y-28">
+        <div className="mt-16 space-y-16 md:mt-20 md:space-y-20">
           {months.map((m) => (
             <article key={m.label} className="prose-x">
               <h3 className="h3 text-ink">{m.label}</h3>
@@ -27,13 +34,40 @@ export default function Proof() {
                 ))}
               </div>
 
-              <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-5">
-                {m.screenshots.map((s, i) => (
-                  <Screenshot key={i} src={s.src} alt={s.alt} caption={s.caption} />
-                ))}
+              <div className="mt-6 grid grid-cols-1 gap-3 md:grid-cols-2 md:gap-4">
+                {m.screenshots.map((s) => {
+                  const i = imgIdx++;
+                  return (
+                    <Screenshot
+                      key={s.src}
+                      src={s.src}
+                      alt={s.alt}
+                      featured={s.featured}
+                      images={allImages}
+                      index={i}
+                    />
+                  );
+                })}
               </div>
             </article>
           ))}
+
+          {summary ? (
+            <article className="prose-x">
+              <h3 className="h3 text-ink">{summary.label}</h3>
+              <p className="mt-3 body-lg">{summary.body}</p>
+              <div className="mx-auto mt-6 max-w-md">
+                <Screenshot
+                  src={summary.screenshot.src}
+                  alt={summary.screenshot.alt}
+                  fit="contain"
+                  aspect="aspect-[3/4]"
+                  images={allImages}
+                  index={imgIdx++}
+                />
+              </div>
+            </article>
+          ) : null}
         </div>
       </div>
     </section>
