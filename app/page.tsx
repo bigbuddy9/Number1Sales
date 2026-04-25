@@ -1,10 +1,9 @@
 import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
-import Stats from "@/components/Stats";
-import ValueProps from "@/components/ValueProps";
-import HowItWorks from "@/components/HowItWorks";
-import Testimonials from "@/components/Testimonials";
-import FAQ from "@/components/FAQ";
+import Proof from "@/components/Proof";
+import TotalRevenue from "@/components/TotalRevenue";
+import Receipts from "@/components/Receipts";
+import CaseStudies from "@/components/CaseStudies";
 import FinalCTA from "@/components/FinalCTA";
 import Footer from "@/components/Footer";
 
@@ -14,11 +13,10 @@ export default function Page() {
       <Nav />
       <main>
         <Hero />
-        <Stats />
-        <ValueProps />
-        <HowItWorks />
-        <Testimonials />
-        <FAQ />
+        <Proof />
+        <TotalRevenue />
+        <Receipts />
+        <CaseStudies />
         <FinalCTA />
       </main>
       <Footer />
