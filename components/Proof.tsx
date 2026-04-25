@@ -29,7 +29,7 @@ export default function Proof() {
 
               <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-5">
                 {m.screenshots.map((s, i) => (
-                  <Screenshot key={i} src={s.src} alt={s.alt} />
+                  <Screenshot key={i} src={s.src} alt={s.alt} caption={s.caption} />
                 ))}
               </div>
             </article>

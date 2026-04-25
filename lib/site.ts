@@ -1,5 +1,7 @@
 // Single source of truth for copy, links, and structured content.
 
+type ScreenshotEntry = { src: string; alt: string; caption?: string };
+
 export const site = {
   brand: "Number 1 Sales",
   domain: "number1sales.com",
@@ -35,36 +37,36 @@ export const site = {
         label: "Month 1 — August",
         medals: "🥇 Total Sales · 🥇 Close Rate · 🥇 Total kW Sold",
         body: "Started a week into August. Still finished #1 across every company metric. In the final week of the month, became the first rep in company history to cross the 100kW mark for total solar kW sold in a single week.",
-        screenshots: [
-          { src: "", alt: "August — monthly results 1" },
-          { src: "", alt: "August — monthly results 2" },
-          { src: "", alt: "August — monthly results 3" },
-          { src: "", alt: "August — monthly results 4" },
+        screenshots: <ScreenshotEntry[]>[
+          { src: "/proof/aug-1.png", alt: "August — monthly total sales" },
+          { src: "/proof/aug-2.png", alt: "August — week ending 31/08/2025: first solo 100kW week", caption: "Week ending 31/08/2025 — 108.24 kW sold solo, a company first" },
+          { src: "/proof/aug-3.png", alt: "August — monthly sum of system size (kW)" },
+          { src: "/proof/aug-4.png", alt: "August — monthly close rates" },
         ],
       },
       {
         label: "Month 2 — September",
         medals: "🥇 Total Sales · 🥇 Close Rate · 🥇 Total kW Sold",
         body: "Second month — #1 in every trackable company metric. Screenshots below show the monthly results plus snapshots from two weekly meetings.",
-        screenshots: [
-          { src: "", alt: "September — screenshot 1" },
-          { src: "", alt: "September — screenshot 2" },
-          { src: "", alt: "September — screenshot 3" },
-          { src: "", alt: "September — screenshot 4" },
-          { src: "", alt: "September — screenshot 5" },
+        screenshots: <ScreenshotEntry[]>[
+          { src: "/proof/sep-1.png", alt: "September — monthly total sales" },
+          { src: "/proof/sep-2.png", alt: "September — week ending 21/09/2025", caption: "Week ending 21/09/2025" },
+          { src: "/proof/sep-3.png", alt: "September — week ending 07/09/2025", caption: "Week ending 07/09/2025" },
+          { src: "/proof/sep-4.png", alt: "September — monthly sum of system size (kW)" },
+          { src: "/proof/sep-5.png", alt: "September — monthly close rates" },
         ],
       },
       {
         label: "Month 3 — October",
         medals: "🥇 Total Sales · 🥈 Close Rate · 🥇 Total kW Sold",
         body: "#1 across every metric except close rate. Worth flagging: one rep had switched to in-home appointments while the rest of us were on virtual, which structurally lifts close rate.\n\nThis was also the month my cousin Daniel joined the company. Never sold anything in his life — first sales role ever. I trained him on my full process: scripts, frameworks, meeting recordings, the whole system. He finished #2 in the company in his first month, behind me.",
-        screenshots: [
-          { src: "", alt: "October — screenshot 1" },
-          { src: "", alt: "October — screenshot 2" },
-          { src: "", alt: "October — screenshot 3" },
-          { src: "", alt: "October — screenshot 4" },
-          { src: "", alt: "October — screenshot 5" },
-          { src: "", alt: "October — screenshot 6" },
+        screenshots: <ScreenshotEntry[]>[
+          { src: "/proof/oct-1.png", alt: "October — monthly total sales (Jesse #1, Daniel #2)" },
+          { src: "/proof/oct-2.png", alt: "October — week ending 19/10/2025", caption: "Week ending 19/10/2025" },
+          { src: "/proof/oct-3.png", alt: "October — weekly results", caption: "Week ending 05/10/2025" },
+          { src: "/proof/oct-4.png", alt: "October — monthly sum of system size (kW)" },
+          { src: "/proof/oct-5.png", alt: "October — monthly close rates" },
+          { src: "/proof/oct-6.png", alt: "October — additional weekly results" },
         ],
       },
       {
@@ -72,7 +74,7 @@ export const site = {
         medals: "🥇 Total Sales · 🥇 Close Rate · 🥇 Total kW Sold",
         highlight: "National weekly and monthly sales records broken.",
         body: "Broke the company's all-time weekly sales record. Then broke the all-time monthly record — same month. #1 across every trackable metric. Daniel finished #2 across every metric again, in his second month.\n\nScreenshots below show the record-breaking week, two other weekly snapshots, and the full monthly results.",
-        screenshots: [
+        screenshots: <ScreenshotEntry[]>[
           { src: "", alt: "November — record-breaking week" },
           { src: "", alt: "November — weekly snapshot 1" },
           { src: "", alt: "November — weekly snapshot 2" },
@@ -84,7 +86,7 @@ export const site = {
         label: "Month 5 — December",
         medals: "$10,000 sales competition won. #1 Salesperson in the Company award.",
         body: "The company was off for half of December over the holiday period, so there were no weekly or monthly meetings, though December is when the awards came in.\n\nI was presented with the #1 Salesperson in the Company award and the $10,000 bonus for winning the company-wide sales competition. I split the bonus 50/50 with Daniel, who finished second. Daniel also won Fastest-Growing Sales Rep after having no prior sales experience 2 months earlier, a testament to this systems effectiveness.\n\nBelow: the sales competition details, the award presentation, and Daniel receiving his award.",
-        screenshots: [
+        screenshots: <ScreenshotEntry[]>[
           { src: "", alt: "December — sales competition details" },
           { src: "", alt: "December — award presentation" },
           { src: "", alt: "December — #1 salesperson award" },
