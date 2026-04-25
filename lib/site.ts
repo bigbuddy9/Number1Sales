@@ -66,7 +66,7 @@ export const site = {
           { src: "/proof/oct-3.png", alt: "October — weekly results", caption: "Week ending 05/10/2025" },
           { src: "/proof/oct-4.png", alt: "October — monthly sum of system size (kW)" },
           { src: "/proof/oct-5.png", alt: "October — monthly close rates" },
-          { src: "/proof/oct-6.png", alt: "October — additional weekly results" },
+          { src: "/proof/oct-6.png", alt: "October — week ending 12/10/2025", caption: "Week ending 12/10/2025" },
         ],
       },
       {
@@ -75,11 +75,11 @@ export const site = {
         highlight: "National weekly and monthly sales records broken.",
         body: "Broke the company's all-time weekly sales record. Then broke the all-time monthly record — same month. #1 across every trackable metric. Daniel finished #2 across every metric again, in his second month.\n\nScreenshots below show the record-breaking week, two other weekly snapshots, and the full monthly results.",
         screenshots: <ScreenshotEntry[]>[
-          { src: "", alt: "November — record-breaking week" },
-          { src: "", alt: "November — weekly snapshot 1" },
-          { src: "", alt: "November — weekly snapshot 2" },
-          { src: "", alt: "November — monthly results 1" },
-          { src: "", alt: "November — monthly results 2" },
+          { src: "/proof/nov-1.png", alt: "November — record-breaking week ending 16/11/2025", caption: "Week ending 16/11/2025 — all-time company weekly sales record (15 sales · 182.16 kW)" },
+          { src: "/proof/nov-2.png", alt: "November — weekly snapshot", caption: "Weekly results — November" },
+          { src: "/proof/nov-3.png", alt: "November — weekly snapshot", caption: "Weekly results — November" },
+          { src: "/proof/nov-4.png", alt: "November — monthly total sales (Jesse 38, Daniel 34)" },
+          { src: "/proof/nov-5.png", alt: "November — monthly close rates (Jesse 58%, Dan 48%)" },
         ],
       },
       {
