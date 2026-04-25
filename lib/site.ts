@@ -1,6 +1,6 @@
 // Single source of truth for copy, links, and structured content.
 
-type ScreenshotEntry = { src: string; alt: string; caption?: string };
+type ScreenshotEntry = { src: string; alt: string; featured?: boolean };
 
 export const site = {
   brand: "Number 1 Sales",
@@ -77,7 +77,7 @@ export const site = {
         screenshots: <ScreenshotEntry[]>[
           { src: "/proof/nov-total-sales.jpg", alt: "November — monthly total sales (Jesse 38, Daniel 34)" },
           { src: "/proof/nov-close-rate.jpg", alt: "November — monthly close rates (Jesse 58%, Dan 48%)" },
-          { src: "/proof/nov-week-16.jpg", alt: "November — record-breaking weekly snapshot", caption: "All-time company weekly sales record · 15 sales · 182.16 kW" },
+          { src: "/proof/nov-week-16.jpg", alt: "November — record-breaking week: 15 sales, 182.16 kW", featured: true },
           { src: "/proof/nov-week-23.jpg", alt: "November — weekly snapshot" },
           { src: "/proof/nov-week-1.jpg", alt: "November — weekly snapshot" },
         ],
@@ -93,12 +93,11 @@ export const site = {
         ],
       },
     ],
-  },
-
-  totalRevenue: {
-    header: "Total Revenue Closed",
-    body: "Below is my personal deal tracker showing total cash collected during my time at the company — over $3.5M in personally closed revenue.",
-    screenshot: { src: "/proof/revenue.jpg", alt: "Personal deal tracker — total cash collected: $3,526,791.50", caption: "Personal deal tracker · $3,526,791.50 in cash collected" },
+    summary: {
+      label: "Total Revenue Closed",
+      body: "Personal deal tracker — over $3.5M in personally closed revenue across the five months.",
+      screenshot: { src: "/proof/revenue.jpg", alt: "Personal deal tracker — total cash collected: $3,526,791.50" },
+    },
   },
 
   receipts: {
