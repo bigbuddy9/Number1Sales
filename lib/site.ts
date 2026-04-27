@@ -27,16 +27,16 @@ export const site = {
   },
 
   proof: {
-    header: "Recent Sales Results 💎",
+    header: "Proof",
     intro:
       "Direct evidence from company-wide sales meetings during my time at RESINC Solar — the #1 solar company in Australia. I worked there from August 2025 to January 2026 before launching Number 1 Sales.",
     introTwo:
-      "In that time: #1 every month, broke the company's weekly and monthly sales records, won the $10,000 company-wide sales competition, took home the #1 Salesperson award, averaged a 50%+ close rate, and personally closed over $3.5M in revenue.",
+      "In that time: was the #1 salesperson in the company every month, broke the company's weekly and monthly sales records, won the $10,000 company-wide sales competition, averaged a 50%+ close rate, and personally closed over $3.5M in revenue.",
     months: [
       {
         label: "Month 1 — August",
         medals: "🥇 Total Sales · 🥇 Close Rate · 🥇 Total kW Sold",
-        body: "Started a week into August. Still finished #1 across every company metric. In the final week of the month, became the first rep in company history to cross the 100kW mark for total solar kW sold in a single week.",
+        body: "Started a week late into August — still finished as the #1 salesperson in the company across every metric. In the final week of the month, became the first rep in company history to cross the 100kW mark for total solar kW sold in a single week.",
         screenshots: <ScreenshotEntry[]>[
           { src: "/proof/aug-total-sales.jpg", alt: "August — monthly total sales (Jesse #1)" },
           { src: "/proof/aug-close-rate.jpg", alt: "August — monthly close rates (Jesse 49%)" },
@@ -93,11 +93,6 @@ export const site = {
         ],
       },
     ],
-    summary: {
-      label: "Total Revenue Closed",
-      body: "Personal deal tracker — over $3.5M in personally closed revenue across the five months.",
-      screenshot: { src: "/proof/revenue.jpg", alt: "Personal deal tracker — total cash collected: $3,526,791.50" },
-    },
   },
 
   receipts: {
@@ -109,6 +104,11 @@ export const site = {
       "The clearest example: my cousin Daniel. He'd never sold anything in his life when he joined the company. I trained him on the exact same system, and he finished #2 every single month, directly behind me.",
       "If the system works on someone with zero prior sales experience, it'll work in your business — as it has for the businesses below.",
     ],
+    revenue: {
+      label: "Total Revenue Closed",
+      body: "Personal deal tracker — over $3.5M in personally closed revenue across the five months.",
+      screenshot: { src: "/proof/revenue.jpg", alt: "Personal deal tracker — total cash collected: $3,526,791.50" },
+    },
   },
 
   caseStudies: {
