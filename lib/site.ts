@@ -31,7 +31,7 @@ export const site = {
     intro:
       "Direct evidence from company-wide sales meetings during my time at RESINC Solar — the #1 solar company in Australia. I worked there from August 2025 to January 2026 before launching Number 1 Sales.",
     introTwo:
-      "In that time: was the #1 salesperson in the company every month, broke the company's weekly and monthly sales records, won the $10,000 company-wide sales competition, averaged a 50%+ close rate, and personally closed over $3.5M in revenue.",
+      "In that time: was the #1 salesperson in the company every month, broke the company's weekly and monthly sales records, won the $10,000 company-wide sales competition, won the #1 Salesperson in the Company award, averaged a 50%+ close rate, and personally closed over $3.5M in revenue.",
     months: [
       {
         label: "Month 1 — August",
@@ -95,6 +95,14 @@ export const site = {
     ],
   },
 
+  totalRevenue: {
+    header: "Total Revenue Closed",
+    body: "Personal deal tracker — every deal logged, every dollar collected. Over five months, this is the cash that came in from solar systems I personally closed.",
+    headline: "$3,526,791.50",
+    sub: "in personally closed revenue · 5 months",
+    screenshot: { src: "/proof/revenue.jpg", alt: "Personal deal tracker — total cash collected: $3,526,791.50" },
+  },
+
   receipts: {
     header: "Receipts.",
     paragraphs: [
@@ -104,11 +112,6 @@ export const site = {
       "The clearest example: my cousin Daniel. He'd never sold anything in his life when he joined the company. I trained him on the exact same system, and he finished #2 every single month, directly behind me.",
       "If the system works on someone with zero prior sales experience, it'll work in your business — as it has for the businesses below.",
     ],
-    revenue: {
-      label: "Total Revenue Closed",
-      body: "Personal deal tracker — over $3.5M in personally closed revenue across the five months.",
-      screenshot: { src: "/proof/revenue.jpg", alt: "Personal deal tracker — total cash collected: $3,526,791.50" },
-    },
   },
 
   caseStudies: {
