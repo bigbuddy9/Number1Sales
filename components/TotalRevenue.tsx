@@ -8,21 +8,25 @@ export default function TotalRevenue() {
     <section className="section border-t border-border/50">
       <div className="container-x">
         <div className="prose-x">
-          <h2 className="h2 text-center">{header}</h2>
-          <p className="mt-6 body-lg">{body}</p>
-          <div className="mt-6 text-center">
-            <div className="text-3xl font-extrabold tracking-tight text-accent md:text-4xl">
-              {headline}
+          <div className="grid items-start gap-8 md:grid-cols-[1fr_220px] md:gap-10">
+            <div>
+              <h2 className="h2">{header}</h2>
+              <p className="mt-6 body-lg">{body}</p>
+              <div className="mt-6">
+                <div className="text-3xl font-extrabold tracking-tight text-accent md:text-4xl">
+                  {headline}
+                </div>
+                <div className="mt-2 text-sm font-medium text-mutedHi">{sub}</div>
+              </div>
             </div>
-            <div className="mt-2 text-sm font-medium text-mutedHi">{sub}</div>
-          </div>
-          <div className="mx-auto mt-8 max-w-[240px]">
-            <Screenshot
-              src={screenshot.src}
-              alt={screenshot.alt}
-              fit="contain"
-              aspect="aspect-[1/2]"
-            />
+            <div className="mx-auto w-full max-w-[220px] md:max-w-none">
+              <Screenshot
+                src={screenshot.src}
+                alt={screenshot.alt}
+                fit="contain"
+                aspect="aspect-[1/2]"
+              />
+            </div>
           </div>
         </div>
       </div>
