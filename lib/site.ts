@@ -109,7 +109,7 @@ export const site = {
       "Every screenshot above is from real company sales meetings. Every record, every #1 finish, every dollar — direct evidence.",
       "These results weren't purely down to talent. They came from following a clear, repeatable process — one built around meticulously optimising every stage of the sales cycle: appointments, follow-ups, closes, referrals.",
       "It's a system I can install in your business and train any rep to run effectively. Anyone can replicate these results.",
-      "The clearest example: my cousin Daniel. He'd never sold anything in his life when he joined the company. I trained him on the exact same system, and he finished #2 every single month, directly behind me.",
+      "The clearest example: my cousin Daniel. He'd never sold anything in his life when he joined the company. I trained him on the exact same system, and he performed immediately — finishing above every other rep in the company, aside from myself.",
       "If the system works on someone with zero prior sales experience, it'll work in your business — as it has for the businesses below.",
     ],
   },
