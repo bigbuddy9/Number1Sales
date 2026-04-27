@@ -22,17 +22,19 @@ export default function Screenshot({
   index,
   featured,
   fit = "cover",
-  aspect = "aspect-[16/10]",
+  aspect,
 }: Props) {
   const { open } = useLightbox();
   const [errored, setErrored] = useState(false);
 
   const wrapClass = featured ? "md:col-span-2" : "";
+  const finalAspect =
+    aspect ?? (featured ? "aspect-[16/10] md:aspect-[2/1]" : "aspect-[16/10]");
 
   if (!src || errored) {
     return (
       <div
-        className={`${wrapClass} flex ${aspect} items-center justify-center rounded-lg border border-border bg-surface text-sm text-muted`}
+        className={`${wrapClass} flex ${finalAspect} items-center justify-center rounded-lg border border-border bg-surface text-sm text-muted`}
       >
         <span>Screenshot pending</span>
       </div>
@@ -50,7 +52,7 @@ export default function Screenshot({
       className={`${wrapClass} group block w-full overflow-hidden rounded-lg border border-border bg-surface transition hover:border-accent/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent`}
       aria-label={`Expand: ${alt}`}
     >
-      <div className={`${aspect} w-full overflow-hidden`}>
+      <div className={`${finalAspect} w-full overflow-hidden`}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={src}

@@ -2,12 +2,11 @@ import { site } from "@/lib/site";
 import Screenshot from "./Screenshot";
 
 export default function Proof() {
-  const { header, intro, introTwo, months, summary } = site.proof;
+  const { header, intro, introTwo, months } = site.proof;
 
-  const allImages = [
-    ...months.flatMap((m) => m.screenshots),
-    ...(summary ? [summary.screenshot] : []),
-  ].map((s) => ({ src: s.src, alt: s.alt }));
+  const allImages = months
+    .flatMap((m) => m.screenshots)
+    .map((s) => ({ src: s.src, alt: s.alt }));
 
   let imgIdx = 0;
 
@@ -51,23 +50,6 @@ export default function Proof() {
               </div>
             </article>
           ))}
-
-          {summary ? (
-            <article className="prose-x">
-              <h3 className="h3 text-ink">{summary.label}</h3>
-              <p className="mt-3 body-lg">{summary.body}</p>
-              <div className="mx-auto mt-6 max-w-md">
-                <Screenshot
-                  src={summary.screenshot.src}
-                  alt={summary.screenshot.alt}
-                  fit="contain"
-                  aspect="aspect-[3/4]"
-                  images={allImages}
-                  index={imgIdx++}
-                />
-              </div>
-            </article>
-          ) : null}
         </div>
       </div>
     </section>
