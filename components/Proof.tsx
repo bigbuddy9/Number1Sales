@@ -56,10 +56,12 @@ export default function Proof() {
           ))}
 
           {messages ? (
-            <article className="prose-x">
-              <h3 className="h3 text-ink">{messages.label}</h3>
-              <p className="mt-3 body-lg">{messages.body}</p>
-              <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 md:gap-4">
+            <article>
+              <div className="prose-x">
+                <h3 className="h3 text-ink">{messages.label}</h3>
+                <p className="mt-3 body-lg">{messages.body}</p>
+              </div>
+              <div className="mx-auto mt-6 grid max-w-5xl grid-cols-2 gap-3 md:grid-cols-4 md:gap-4">
                 {messages.images.map((img, i) => (
                   <Screenshot
                     key={img.src}
