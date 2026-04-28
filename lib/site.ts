@@ -93,20 +93,18 @@ export const site = {
         ],
       },
     ],
-  },
-
-  messages: {
-    header: "Inbox.",
-    intro:
-      "Messages from top reps at the #1 solar company in Australia — peers asking for the system, the recordings, the unlock.",
-    images: [
-      { src: "/messages/msg-1.jpg", alt: "Peer message — asking how to close like this" },
-      { src: "/messages/msg-2.jpg", alt: "Peer message — asking for the secret" },
-      { src: "/messages/msg-3.jpg", alt: "Peer message — asking for help" },
-      { src: "/messages/msg-4.jpg", alt: "Peer message — asking for recordings" },
-      { src: "/messages/msg-5.jpg", alt: "Peer message — asking for the system" },
-      { src: "/messages/msg-6.jpg", alt: "Peer message — asking for advice" },
-    ],
+    messages: {
+      label: "Other reps came asking",
+      body: "Top reps inside the company kept reaching out asking how I was doing it. A handful of the messages:",
+      images: [
+        { src: "/messages/msg-1.jpg", alt: "Peer message — asking how to close like this" },
+        { src: "/messages/msg-2.jpg", alt: "Peer message — asking for the secret" },
+        { src: "/messages/msg-3.jpg", alt: "Peer message — asking for help" },
+        { src: "/messages/msg-4.jpg", alt: "Peer message — asking for recordings" },
+        { src: "/messages/msg-5.jpg", alt: "Peer message — asking for the system" },
+        { src: "/messages/msg-6.jpg", alt: "Peer message — asking for advice" },
+      ],
+    },
   },
 
   totalRevenue: {
