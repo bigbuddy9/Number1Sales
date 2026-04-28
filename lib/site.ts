@@ -94,8 +94,8 @@ export const site = {
       },
     ],
     messages: {
-      label: "Other reps came asking",
-      body: "Top reps inside the company kept reaching out asking how I was doing it. A handful of the messages:",
+      label: "Unfathomable.",
+      body: "I constantly had other reps inside the company reaching out asking me how it was possible I was delivering these results consistently. This is what a dialled-in system does — it gives you an unparalleled advantage over everyone else. To peers without one, the gap between me and them seems impossible to close. They're guessing through every single call while I'm executing a framework.",
       images: [
         { src: "/messages/msg-1.jpg", alt: "Peer message — asking how to close like this" },
         { src: "/messages/msg-2.jpg", alt: "Peer message — asking for the secret" },
