@@ -95,6 +95,20 @@ export const site = {
     ],
   },
 
+  messages: {
+    header: "Inbox.",
+    intro:
+      "Messages from top reps at the #1 solar company in Australia — peers asking for the system, the recordings, the unlock.",
+    images: [
+      { src: "/messages/msg-1.jpg", alt: "Peer message — asking how to close like this" },
+      { src: "/messages/msg-2.jpg", alt: "Peer message — asking for the secret" },
+      { src: "/messages/msg-3.jpg", alt: "Peer message — asking for help" },
+      { src: "/messages/msg-4.jpg", alt: "Peer message — asking for recordings" },
+      { src: "/messages/msg-5.jpg", alt: "Peer message — asking for the system" },
+      { src: "/messages/msg-6.jpg", alt: "Peer message — asking for advice" },
+    ],
+  },
+
   totalRevenue: {
     header: "Total Revenue Closed",
     body: "Personal deal tracker — every deal logged, every dollar collected. Over five months, this is the cash that came in from solar systems I personally closed.",
