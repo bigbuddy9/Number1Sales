@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { site } from "@/lib/site";
 import { LightboxProvider } from "@/components/Lightbox";
+import iconImg from "@/ScaleSolarIcon.png";
+import logoImg from "@/ScaleSolarLogo.png";
 
 export const metadata: Metadata = {
   title: `${site.brand} — ${site.hero.h1}`,
@@ -13,19 +15,17 @@ export const metadata: Metadata = {
     url: `https://${site.domain}`,
     siteName: site.brand,
     type: "website",
-    images: [{ url: "/logo.png", width: 1774, height: 887, alt: site.brand }],
+    images: [{ url: logoImg.src, width: logoImg.width, height: logoImg.height, alt: site.brand }],
   },
   twitter: {
     card: "summary_large_image",
     title: site.brand,
     description: site.hero.sub,
-    images: ["/logo.png"],
+    images: [logoImg.src],
   },
   icons: {
-    icon: [
-      { url: "/icon.png", type: "image/png" },
-    ],
-    apple: "/icon.png",
+    icon: [{ url: iconImg.src, type: "image/png" }],
+    apple: iconImg.src,
   },
 };
 
