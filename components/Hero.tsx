@@ -1,3 +1,5 @@
+import Image from "next/image";
+import logoImg from "@/ScaleSolarLogo.png";
 import { site } from "@/lib/site";
 import VideoPlayer from "./VideoPlayer";
 import CalEmbed from "./CalEmbed";
@@ -17,7 +19,13 @@ export default function Hero() {
           <VideoPlayer embedUrl={videoEmbedUrl} thumbnail={videoThumbnail} title="Intro" />
         </div>
 
-        <div className="mx-auto mt-12 w-full max-w-3xl">
+        <div className="mx-auto mt-16 w-full max-w-3xl">
+          <Image
+            src={logoImg}
+            alt={site.brand}
+            priority
+            className="mx-auto mb-6 h-auto w-full max-w-[240px] md:max-w-[280px]"
+          />
           <CalEmbed calLink={site.calLink} namespace="hero" />
         </div>
       </div>
