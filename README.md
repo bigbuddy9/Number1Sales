@@ -1,6 +1,6 @@
-# Number 1 Sales
+# Scale Solar
 
-Landing page for [number1sales.com](https://number1sales.com) — the #1 solar sales system.
+Landing page for [scalesolar.co](https://scalesolar.co) — the #1 solar sales system.
 
 Next.js 15 · TypeScript · Tailwind. Deploys free on Vercel.
 
@@ -47,9 +47,9 @@ Click-to-play is built in. `?rel=0` is added automatically. For Mux or self-host
 
 ## Analytics (Plausible)
 
-The Plausible script is included in `app/layout.tsx`, pointing at `number1sales.com`. To start collecting:
+The Plausible script is included in `app/layout.tsx`, pointing at `scalesolar.co`. To start collecting:
 
-1. Sign up at [plausible.io](https://plausible.io) and add `number1sales.com` as a site.
+1. Sign up at [plausible.io](https://plausible.io) and add `scalesolar.co` as a site.
 2. CTA buttons are pre-tagged — events: `cta_click` with `position` = `nav | hero | receipts | final`.
 3. Outbound link clicks and scroll depth are auto-tracked.
 
