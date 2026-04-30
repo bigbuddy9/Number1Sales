@@ -1,4 +1,5 @@
 import { site } from "@/lib/site";
+import Image from "next/image";
 import VideoPlayer from "./VideoPlayer";
 import CalEmbed from "./CalEmbed";
 
@@ -7,8 +8,16 @@ export default function Hero() {
 
   return (
     <section className="relative">
-      <div className="container-x pt-20 pb-section md:pt-28">
+      <div className="container-x pt-16 pb-section md:pt-20">
         <div className="mx-auto max-w-3xl text-center">
+          <Image
+            src="/logo.png"
+            alt={site.brand}
+            width={1774}
+            height={887}
+            priority
+            className="mx-auto mb-8 h-auto w-full max-w-[260px] md:max-w-[320px]"
+          />
           <h1 className="h1">{h1}</h1>
           <p className="mx-auto mt-6 max-w-2xl text-body md:text-bodyLg text-mutedHi">{sub}</p>
         </div>

@@ -13,13 +13,20 @@ export const metadata: Metadata = {
     url: `https://${site.domain}`,
     siteName: site.brand,
     type: "website",
+    images: [{ url: "/logo.png", width: 1774, height: 887, alt: site.brand }],
   },
   twitter: {
     card: "summary_large_image",
     title: site.brand,
     description: site.hero.sub,
+    images: ["/logo.png"],
   },
-  icons: { icon: "/favicon.ico" },
+  icons: {
+    icon: [
+      { url: "/icon.png", type: "image/png" },
+    ],
+    apple: "/icon.png",
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
