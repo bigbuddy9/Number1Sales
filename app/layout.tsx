@@ -2,8 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { site } from "@/lib/site";
 import { LightboxProvider } from "@/components/Lightbox";
-import Image from "next/image";
-import iconImg from "@/ScaleSolarIconTransparent.png";
+import iconImg from "@/ScaleSolarIcon.png";
 import logoImg from "@/ScaleSolarLogoTransparent.png";
 
 export const metadata: Metadata = {
@@ -49,14 +48,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body>
-        <div className="absolute left-4 top-4 z-50 md:left-6 md:top-6">
-          <Image
-            src={iconImg}
-            alt={site.brand}
-            className="h-auto w-10 md:w-12"
-            priority
-          />
-        </div>
         <LightboxProvider>{children}</LightboxProvider>
       </body>
     </html>
