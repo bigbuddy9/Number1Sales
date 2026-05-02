@@ -1,5 +1,5 @@
 import Image from "next/image";
-import logoImg from "@/ScaleSolarLogo.png";
+import logoImg from "@/ScaleSolarLogoTransparent.png";
 import { site } from "@/lib/site";
 
 export default function Footer() {
