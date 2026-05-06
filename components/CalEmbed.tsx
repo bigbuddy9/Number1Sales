@@ -11,7 +11,7 @@ type Props = {
   minHeight?: number;
 };
 
-export default function CalEmbed({ calLink, namespace = "default", minHeight = 540 }: Props) {
+export default function CalEmbed({ calLink, namespace = "default", minHeight = 600 }: Props) {
   useEffect(() => {
     (async () => {
       const cal = await getCalApi({ namespace });
@@ -29,8 +29,8 @@ export default function CalEmbed({ calLink, namespace = "default", minHeight = 5
             "cal-border": "#1F1F23",
           },
         },
-        hideEventTypeDetails: true,
-        layout: "column_view",
+        hideEventTypeDetails: false,
+        layout: "month_view",
       });
     })();
   }, [namespace]);
@@ -44,7 +44,7 @@ export default function CalEmbed({ calLink, namespace = "default", minHeight = 5
         namespace={namespace}
         calLink={calLink}
         style={{ width: "100%", height: "100%", minHeight }}
-        config={{ layout: "column_view", theme: "dark" }}
+        config={{ layout: "month_view", theme: "dark" }}
       />
     </div>
   );
