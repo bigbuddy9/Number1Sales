@@ -85,7 +85,7 @@ export const site = {
       {
         label: "Month 5 — December",
         medals: "$10,000 sales competition won. #1 Salesperson in the Company award.",
-        body: "The company was off for half of December over the holiday period, so there were no weekly or monthly meetings, though December is when the awards came in.\n\nI was presented with the #1 Salesperson in the Company award and the $10,000 bonus for winning the company-wide sales competition. I split the bonus 50/50 with Daniel, who finished second. Daniel also won Fastest-Growing Sales Rep after having no prior sales experience 2 months earlier, a testament to this systems effectiveness.\n\nBelow: the sales competition details and Jesse receiving the #1 Salesperson in the Company award.",
+        body: "The company was off for half of December over the holiday period, so there were no weekly or monthly meetings, though December is when the awards came in.\n\nI was presented with the #1 Salesperson in the Company award and the $10,000 bonus for winning the company-wide sales competition. I split the bonus 50/50 with Daniel, who finished second. Daniel was also named the #2 Salesperson in the Company — going from zero sales experience to outperforming every rep but me in just two months, a testament to how effectively this system transfers.\n\nBelow: the sales competition details and Jesse receiving the #1 Salesperson in the Company award.",
         screenshots: <ScreenshotEntry[]>[
           { src: "/proof/dec-competition.jpg", alt: "December — $10,000 sales competition details" },
           { src: "/proof/dec-jesse-award.jpg", alt: "December — #1 Salesperson in the Company award presentation" },
