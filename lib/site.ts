@@ -5,10 +5,10 @@ type ScreenshotEntry = { src: string; alt: string; featured?: boolean };
 export const site = {
   brand: "Scale Solar",
   domain: "scalesolar.co",
-  bookingUrl: "https://cal.com/jessebarbato/advisory-session",
+  bookingUrl: "https://cal.com/team/scale-solar/advisory-session",
   // Used by the inline Cal.com embeds (under hero + final CTA).
   // Format: "username" or "username/event-slug".
-  calLink: "jessebarbato/advisory-session",
+  calLink: "team/scale-solar/advisory-session",
   // Plausible domain — leave as the production domain. Script is injected
   // unconditionally; if no Plausible account exists for this domain yet,
   // the requests are silently dropped. Add the domain at plausible.io when ready.
