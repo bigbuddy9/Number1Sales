@@ -1,0 +1,253 @@
+{
+  "name": "Non-Interested Reply -> Respond to Them ASAP",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "instantly-lead-reply",
+        "options": {}
+      },
+      "id": "node-webhook",
+      "name": "Instantly Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [-160, 300],
+      "webhookId": "instantly-lead-reply"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": false,
+            "leftValue": "",
+            "typeValidation": "loose"
+          },
+          "conditions": [
+            {
+              "id": "cond-nosolar",
+              "leftValue": "={{ $json.body.campaign_name }}",
+              "rightValue": "Solar",
+              "operator": {
+                "type": "string",
+                "operation": "notContains"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "node-if-nosolar",
+      "name": "No Solar?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [60, 300]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a-leadreply",
+              "name": "leadReply",
+              "value": "={{ $json.body.reply_text }}",
+              "type": "string"
+            },
+            {
+              "id": "a-firstname",
+              "name": "firstName",
+              "value": "={{ $json.body.firstName }}",
+              "type": "string"
+            },
+            {
+              "id": "a-todaydate",
+              "name": "todayDate",
+              "value": "={{ $now }}",
+              "type": "string"
+            },
+            {
+              "id": "a-leademail",
+              "name": "lead_email",
+              "value": "={{ $json.body.lead_email }}",
+              "type": "string"
+            },
+            {
+              "id": "a-campaignid",
+              "name": "campaign_id",
+              "value": "={{ $json.body.campaign_id }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "node-set-vars",
+      "name": "Set Variables",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [280, 200]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://YOUR-RESOURCE.openai.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-08-01-preview",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "api-key",
+              "value": "YOUR_AZURE_OPENAI_API_KEY"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"temperature\": 1,\n  \"messages\": [\n    {\n      \"role\": \"user\",\n      \"content\": \"You are tasked with categorizing a lead's reply to a sales or marketing communication. Your goal is to determine and categorise the leads intention, based solely on their response. You will categorize the reply into one of two categories:\\n\\n1. Do Not Contact\\n2. Not Interested\\n\\nHere is the lead's reply:\\n\\n<lead_reply>\" + $json.leadReply + \"</lead_reply>\\n\\nPlease carefully read through the lead's reply and categorize it based on the content and tone of the message. Consider the following guidelines:\\n\\n- \\\"Do Not Contact\\\" indicates a statement or question asking to be taken off the list or never contacted again. It can be threatning, indicate clear negative emotion and disrespectful.\\n- \\\"Not Interested\\\" suggests the lead has politely declined and simply states that they aren't interested, either plainly or with a specific reasoning. This response contains no hostility, and is simply a respectful declination.\\n\\nAfter analyzing the reply, provide your categorization. Use only the two categories provided. Do not create new categories or leave the reply uncategorized. If the reply is ambiguous, output \\\"error\\\".\\n\\nOutput the result only with no reasoning in correct JSON only, in the form {\\\"Category\\\": \\\"...\\\"}.\"\n    }\n  ]\n}",
+        "options": {}
+      },
+      "id": "node-azure",
+      "name": "Azure OpenAI - Categorize",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [500, 200]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a-category",
+              "name": "Category",
+              "value": "={{ JSON.parse($json.choices[0].message.content).Category }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "node-parse-interest",
+      "name": "Parse Interest",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [720, 200]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": false,
+            "leftValue": "",
+            "typeValidation": "loose"
+          },
+          "conditions": [
+            {
+              "id": "cond-notinterested",
+              "leftValue": "={{ $json.Category }}",
+              "rightValue": "Not Interested",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "node-if-notinterested",
+      "name": "Not Interested?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [940, 200]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a-response",
+              "name": "Response",
+              "value": "=Thanks for getting back to me {{ $('Set Variables').item.json.firstName }}.</p><p>Before I admit defeat, would literally guaranteeing you results be worth a convo? It would be written on black and white, signed by you and me.</p><p>I don't want to bother you so if you're genuinely not at all interested, no pressure. Let me know and I'll leave you alone—just don't want this to be a wasted opportunity.</p><p>Jesse<br>ECHO AI</p><p>Sent from my iPhone</p>",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "node-set-response",
+      "name": "Response",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [1160, 100]
+    },
+    {
+      "parameters": {
+        "url": "=https://api.instantly.ai/api/v1/unibox/emails?api_key=2gbzCvWwmqHO3hmCCsR8TIcAUbfj8&preview_only=true&lead={{ $('Set Variables').item.json.lead_email }}&campaign_id={{ $('Set Variables').item.json.campaign_id }}&sent_emails=false&email_type=all&latest_of_thread=false",
+        "options": {}
+      },
+      "id": "node-retrieve-uid",
+      "name": "Retrieve UID",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1380, 100]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.instantly.ai/api/v1/unibox/emails/reply?api_key=2gbzCvWwmqHO3hmCCsR8TIcAUbfj8",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"reply_to_uuid\": \"{{ $json.data[0].id }}\",\n  \"subject\": \"{{ $json.data[0].subject }}\",\n  \"from\": \"{{ $json.data[0].eaccount }}\",\n  \"to\": \"{{ $json.data[0].lead }}\",\n  \"body\": {{ JSON.stringify($('Response').item.json.Response) }}\n}",
+        "options": {}
+      },
+      "id": "node-reply",
+      "name": "Reply to prospect",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1600, 100]
+    }
+  ],
+  "connections": {
+    "Instantly Webhook": {
+      "main": [[{ "node": "No Solar?", "type": "main", "index": 0 }]]
+    },
+    "No Solar?": {
+      "main": [[{ "node": "Set Variables", "type": "main", "index": 0 }], []]
+    },
+    "Set Variables": {
+      "main": [[{ "node": "Azure OpenAI - Categorize", "type": "main", "index": 0 }]]
+    },
+    "Azure OpenAI - Categorize": {
+      "main": [[{ "node": "Parse Interest", "type": "main", "index": 0 }]]
+    },
+    "Parse Interest": {
+      "main": [[{ "node": "Not Interested?", "type": "main", "index": 0 }]]
+    },
+    "Not Interested?": {
+      "main": [[{ "node": "Response", "type": "main", "index": 0 }], []]
+    },
+    "Response": {
+      "main": [[{ "node": "Retrieve UID", "type": "main", "index": 0 }]]
+    },
+    "Retrieve UID": {
+      "main": [[{ "node": "Reply to prospect", "type": "main", "index": 0 }]]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "pinData": {}
+}
