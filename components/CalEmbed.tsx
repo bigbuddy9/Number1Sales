@@ -1,21 +1,50 @@
 "use client";
 
-import { useEffect } from "react";
-import Cal, { getCalApi } from "@calcom/embed-react";
+import { useEffect, useRef } from "react";
 
 type Props = {
   calLink: string;
-  /** Identifier for analytics + the embed namespace (must be unique per page). */
   namespace?: string;
-  /** Min height of the calendar container. Default 720px reads cleanly on desktop. */
   minHeight?: number;
 };
 
+declare global {
+  interface Window {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    Cal?: any;
+  }
+}
+
 export default function CalEmbed({ calLink, namespace = "default", minHeight = 600 }: Props) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const initialised = useRef(false);
+
   useEffect(() => {
-    (async () => {
-      const cal = await getCalApi({ namespace });
-      cal("ui", {
+    if (initialised.current) return;
+    initialised.current = true;
+
+    const script = document.createElement("script");
+    script.src = "https://app.cal.com/embed/embed.js";
+    script.async = true;
+    script.onload = () => {
+      if (!window.Cal) return;
+      const Cal = window.Cal;
+
+      // Bootstrap the Cal global if it's a fresh load
+      if (!Cal.loaded) {
+        Cal.ns = Cal.ns || {};
+        Cal.q = Cal.q || [];
+      }
+
+      Cal("init", namespace, { origin: "https://app.cal.com" });
+
+      Cal.ns[namespace]("inline", {
+        elementOrSelector: containerRef.current,
+        config: { layout: "month_view", useSlotsViewOnSmallScreen: "true" },
+        calLink,
+      });
+
+      Cal.ns[namespace]("ui", {
         hideEventTypeDetails: false,
         layout: "month_view",
         theme: "dark",
@@ -30,19 +59,23 @@ export default function CalEmbed({ calLink, namespace = "default", minHeight = 6
           },
         },
       });
-    })();
-  }, [namespace]);
+    };
+
+    document.head.appendChild(script);
+
+    return () => {
+      // Leave the script — removing it breaks other embeds on the same page.
+    };
+  }, [calLink, namespace]);
 
   return (
     <div
       className="overflow-hidden rounded-2xl border border-border bg-surface"
       style={{ minHeight }}
     >
-      <Cal
-        namespace={namespace}
-        calLink={calLink}
+      <div
+        ref={containerRef}
         style={{ width: "100%", height: "100%", overflow: "scroll", minHeight }}
-        config={{ layout: "month_view", theme: "dark", useSlotsViewOnSmallScreen: "true" }}
       />
     </div>
   );
