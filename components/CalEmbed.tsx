@@ -29,17 +29,14 @@ export default function CalEmbed({ calLink, namespace = "default", minHeight = 6
             "cal-border": "#1F1F23",
           },
         },
-        hideEventTypeDetails: false,
+        hideEventTypeDetails: true,
         layout: "month_view",
       });
     })();
   }, [namespace]);
 
   return (
-    <div
-      className="overflow-hidden rounded-2xl border border-border bg-surface"
-      style={{ minHeight }}
-    >
+    <div style={{ minHeight }}>
       <Cal
         namespace={namespace}
         calLink={calLink}
