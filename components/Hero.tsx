@@ -17,7 +17,7 @@ export default function Hero() {
           <VideoPlayer embedUrl={videoEmbedUrl} thumbnail={videoThumbnail} title="Intro" />
         </div>
 
-        <div className="mx-auto mt-12 w-full max-w-5xl">
+        <div className="mx-auto mt-12 w-full max-w-6xl">
           <CalEmbed calLink={site.calLink} namespace="hero" />
         </div>
       </div>

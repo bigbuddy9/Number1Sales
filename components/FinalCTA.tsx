@@ -12,7 +12,7 @@ export default function FinalCTA() {
           <p className="mt-4 text-base font-semibold text-accent md:text-lg">{tagline}</p>
           <p className="mt-4 body-lg">{body}</p>
         </div>
-        <div className="mx-auto mt-10 w-full max-w-5xl">
+        <div className="mx-auto mt-10 w-full max-w-6xl">
           <CalEmbed calLink={site.calLink} namespace="final" />
         </div>
       </div>

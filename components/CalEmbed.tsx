@@ -36,7 +36,7 @@ export default function CalEmbed({ calLink, namespace = "default", minHeight = 6
   }, [namespace]);
 
   return (
-    <div style={{ minHeight }}>
+    <div className="w-full overflow-hidden" style={{ minHeight }}>
       <Cal
         namespace={namespace}
         calLink={calLink}
