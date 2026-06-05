@@ -29,7 +29,7 @@ export default function CalEmbed({ calLink, namespace = "default", minHeight = 6
             "cal-border": "#1F1F23",
           },
         },
-        hideEventTypeDetails: true,
+        hideEventTypeDetails: false,
         layout: "month_view",
       });
     })();
