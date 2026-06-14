@@ -146,6 +146,47 @@ export const site = {
     body: "Copy and paste the #1 solar sales system directly into your business.",
   },
 
+  // Post-booking confirmation page, served at /confirmed.
+  // Point your Cal.com event type's "Redirect on booking" URL here:
+  // https://scalesolar.co/confirmed
+  confirmation: {
+    eyebrow: "You're booked 🎉",
+    h1: "Your call is confirmed.",
+    sub: "Watch the short video below before we speak — it walks you through exactly how the session runs and how to get the most out of it. Then check the requirements underneath so you're set up to go.",
+    // YouTube/Vimeo/Mux embed URL for the congrats / run-through video.
+    // Same format as the hero video. Leave empty to show the placeholder.
+    videoEmbedUrl: "" as string,
+    videoThumbnail: "" as string,
+    requirements: {
+      header: "Before your call — please make sure you have:",
+      note: "These aren't optional. The session is hands-on and we cover a lot of ground. If you're not set up properly, we won't be able to do the work justice — so please lock these in before we speak.",
+      items: [
+        {
+          title: "A laptop or desktop computer",
+          body: "We'll be sharing screens and walking through the system together. A phone or tablet won't cut it — you need a proper computer.",
+        },
+        {
+          title: "45–60 minutes blocked off",
+          body: "Pencil out a full hour with nothing scheduled either side. We use every minute and you don't want to be cut short.",
+        },
+        {
+          title: "A quiet space, no distractions",
+          body: "Somewhere you can focus and talk freely — no driving, no walking around, no background noise. Treat it like an important meeting, because it is.",
+        },
+        {
+          title: "Headphones and a stable connection",
+          body: "Clear audio makes a huge difference. Headphones plus solid Wi-Fi means nothing gets lost.",
+        },
+        {
+          title: "A notepad — and an open mind",
+          body: "Come ready to take notes and think about your own sales process honestly. The more open you are, the more you'll walk away with.",
+        },
+      ],
+    },
+    resultsHeader: "While you wait — here's exactly what this system produces.",
+    resultsSub: "The results below aren't theory. This is the same system we'll be talking through on your call.",
+  },
+
   footer: {
     line: "© 2026 Scale Solar",
   },
