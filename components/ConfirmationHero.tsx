@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import { site } from "@/lib/site";
 import VideoPlayer from "./VideoPlayer";
-import BookingDetails from "./BookingDetails";
+import ConfirmationBadge from "./ConfirmationBadge";
 
 export default function ConfirmationHero() {
   const { eyebrow, h1, videoTitle, videoEmbedUrl, videoThumbnail } = site.confirmation;
@@ -10,15 +10,18 @@ export default function ConfirmationHero() {
     <section className="relative">
       <div className="container-x pt-8 pb-section md:pt-12">
         <div className="mx-auto max-w-3xl text-center">
-          <p className="inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/10 px-4 py-1.5 text-sm font-semibold uppercase tracking-wide text-accentSoft">
-            <span
-              className="inline-block h-1.5 w-1.5 rounded-full bg-accent shadow-[0_0_10px_2px_rgba(212,175,55,0.7)]"
-              aria-hidden
-            />
-            {eyebrow}
-          </p>
-          <Suspense fallback={null}>
-            <BookingDetails />
+          <Suspense
+            fallback={
+              <span className="inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wide text-accentSoft sm:text-sm">
+                <span
+                  className="inline-block h-1.5 w-1.5 rounded-full bg-accent shadow-[0_0_10px_2px_rgba(212,175,55,0.7)]"
+                  aria-hidden
+                />
+                {eyebrow}
+              </span>
+            }
+          >
+            <ConfirmationBadge />
           </Suspense>
           <h1 className="h1 mt-6 text-balance">{h1}</h1>
         </div>
@@ -30,11 +33,7 @@ export default function ConfirmationHero() {
             </svg>
             <span className="text-sm font-semibold uppercase tracking-wide">{videoTitle}</span>
           </div>
-          <VideoPlayer
-            embedUrl={videoEmbedUrl}
-            thumbnail={videoThumbnail}
-            title={videoTitle}
-          />
+          <VideoPlayer embedUrl={videoEmbedUrl} thumbnail={videoThumbnail} title={videoTitle} />
         </div>
       </div>
     </section>

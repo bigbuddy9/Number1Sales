@@ -159,30 +159,31 @@ export const site = {
     videoEmbedUrl: "" as string,
     videoThumbnail: "" as string,
     requirements: {
-      header: "Before your call — lock these in.",
-      note: "Non-negotiable. The session is hands-on and we move fast. Show up without these and we can't do the real work — so get set up before we speak.",
+      header: "How to get the most from your call.",
+      note: "Before we jump on, make sure you've got:",
       items: [
         {
-          title: "A laptop or desktop",
-          body: "We're sharing screens and building inside the system together. Phones and tablets won't cut it.",
+          title: "A laptop — not your phone",
+          body: "We'll be sharing screens and working through your funnel together. A phone won't cut it.",
         },
         {
-          title: "A clear 45–60 minutes",
-          body: "Block a full hour with nothing either side. We use every minute — don't get cut short.",
+          title: "A notepad, or a way to take notes",
+          body: "You'll walk away with clear, actionable steps — capture them as we go.",
         },
         {
-          title: "A quiet, private space",
-          body: "Somewhere you can focus and speak freely. No driving, no walking around, no background noise. Treat it like the meeting it is.",
+          title: "A quiet room, no distractions",
+          body: "Somewhere you can focus and talk freely for the full session.",
         },
         {
-          title: "Headphones + strong Wi-Fi",
-          body: "Clean audio changes everything. Headphones and a solid connection mean nothing gets lost.",
+          title: "45–60 minutes blocked out",
+          body: "Completely free, nothing either side. Show up ready, not half in.",
         },
         {
-          title: "A notepad and an open mind",
-          body: "Come ready to take notes and look at your own sales process honestly. The more open you are, the more you leave with.",
+          title: "Anyone this decision affects",
+          body: "If someone else weighs in on this, have them on the call with you.",
         },
       ],
+      footer: "Show up ready and we'll make it count.",
     },
     resultsHeader: "While you wait — here's what this system produces.",
     resultsSub: "Not theory. This is the exact system we'll walk through on your call.",

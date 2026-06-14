@@ -1,7 +1,7 @@
 import { site } from "@/lib/site";
 
 export default function Requirements() {
-  const { header, note, items } = site.confirmation.requirements;
+  const { header, note, items, footer } = site.confirmation.requirements;
 
   return (
     <section className="section border-t border-border/50">
@@ -38,6 +38,12 @@ export default function Requirements() {
             </li>
           ))}
         </ul>
+
+        {footer ? (
+          <p className="mx-auto mt-10 max-w-3xl text-center text-base font-semibold text-accent md:text-lg">
+            {footer}
+          </p>
+        ) : null}
       </div>
     </section>
   );
