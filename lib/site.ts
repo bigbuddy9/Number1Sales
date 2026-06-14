@@ -151,8 +151,9 @@ export const site = {
   // https://scalesolar.co/confirmed
   confirmation: {
     eyebrow: "Booking confirmed",
-    h1: "Must watch the video below before your call.",
-    sub: "I run you through exactly how your call works and how to get the most out of it. Press play before we speak.",
+    h1: "Must watch the video before your call.",
+    // Small label shown directly above the video player.
+    videoTitle: "Your pre-call briefing",
     // YouTube/Vimeo/Mux embed URL — or a raw file dropped in /public
     // (.mp4/.webm/.mov). Leave empty to show the placeholder.
     videoEmbedUrl: "" as string,

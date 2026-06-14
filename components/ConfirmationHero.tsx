@@ -4,7 +4,7 @@ import VideoPlayer from "./VideoPlayer";
 import BookingDetails from "./BookingDetails";
 
 export default function ConfirmationHero() {
-  const { eyebrow, h1, sub, videoEmbedUrl, videoThumbnail } = site.confirmation;
+  const { eyebrow, h1, videoTitle, videoEmbedUrl, videoThumbnail } = site.confirmation;
 
   return (
     <section className="relative">
@@ -20,15 +20,20 @@ export default function ConfirmationHero() {
           <Suspense fallback={null}>
             <BookingDetails />
           </Suspense>
-          <h1 className="h1 mt-6">{h1}</h1>
-          <p className="mx-auto mt-6 max-w-2xl text-body md:text-bodyLg text-mutedHi">{sub}</p>
+          <h1 className="h1 mt-6 text-balance">{h1}</h1>
         </div>
 
-        <div className="mx-auto mt-10 w-full max-w-video">
+        <div className="mx-auto mt-12 w-full max-w-video">
+          <div className="mb-4 flex items-center justify-center gap-2 text-accentSoft">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+              <path d="M8 5v14l11-7L8 5Z" />
+            </svg>
+            <span className="text-sm font-semibold uppercase tracking-wide">{videoTitle}</span>
+          </div>
           <VideoPlayer
             embedUrl={videoEmbedUrl}
             thumbnail={videoThumbnail}
-            title="Watch this before your call"
+            title={videoTitle}
           />
         </div>
       </div>

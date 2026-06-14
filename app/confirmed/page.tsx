@@ -8,7 +8,7 @@ import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: `${site.brand} — ${site.confirmation.h1}`,
-  description: site.confirmation.sub,
+  description: site.confirmation.h1,
   // Confirmation page is a private next step, not something to index.
   robots: { index: false, follow: false },
 };
