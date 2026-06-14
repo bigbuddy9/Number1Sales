@@ -35,7 +35,11 @@ export default function VideoPlayer({ embedUrl, thumbnail, title }: Props) {
     );
   }
 
-  const playSrc = withParams(embedUrl, { autoplay: "1", rel: "0", modestbranding: "1" });
+  // Self-hosted file (dropped into /public) vs. an embed (YouTube/Vimeo/Mux iframe).
+  const isFile = /\.(mp4|webm|mov|m4v)(\?.*)?$/i.test(embedUrl);
+  const playSrc = isFile
+    ? embedUrl
+    : withParams(embedUrl, { autoplay: "1", rel: "0", modestbranding: "1" });
 
   if (!playing) {
     return (
@@ -68,13 +72,25 @@ export default function VideoPlayer({ embedUrl, thumbnail, title }: Props) {
 
   return (
     <div className="relative aspect-video overflow-hidden rounded-2xl border border-border bg-black">
-      <iframe
-        src={playSrc}
-        title={title ?? "Intro video"}
-        className="h-full w-full"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowFullScreen
-      />
+      {isFile ? (
+        // eslint-disable-next-line jsx-a11y/media-has-caption
+        <video
+          src={playSrc}
+          poster={thumbnail || undefined}
+          className="h-full w-full"
+          controls
+          autoPlay
+          playsInline
+        />
+      ) : (
+        <iframe
+          src={playSrc}
+          title={title ?? "Intro video"}
+          className="h-full w-full"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowFullScreen
+        />
+      )}
     </div>
   );
 }
