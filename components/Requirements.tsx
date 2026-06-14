@@ -15,17 +15,17 @@ export default function Requirements() {
           {items.map((item, i) => (
             <li
               key={i}
-              className="flex items-start gap-4 rounded-2xl border border-border bg-surface p-5"
+              className="flex items-start gap-4 rounded-2xl border border-border bg-surface p-5 transition-colors hover:border-accent/30"
             >
               <span
-                className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-accent text-accentInk"
+                className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-accentSoft to-accent text-accentInk shadow-[0_4px_16px_-2px_rgba(212,175,55,0.55)]"
                 aria-hidden
               >
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none">
                   <path
                     d="M5 13l4 4L19 7"
                     stroke="currentColor"
-                    strokeWidth="2.5"
+                    strokeWidth="3"
                     strokeLinecap="round"
                     strokeLinejoin="round"
                   />
@@ -33,7 +33,7 @@ export default function Requirements() {
               </span>
               <div>
                 <h3 className="text-base font-semibold text-ink md:text-lg">{item.title}</h3>
-                <p className="mt-1 text-body text-mutedHi">{item.body}</p>
+                <p className="mt-1.5 text-body text-mutedHi">{item.body}</p>
               </div>
             </li>
           ))}

@@ -150,41 +150,43 @@ export const site = {
   // Point your Cal.com event type's "Redirect on booking" URL here:
   // https://scalesolar.co/confirmed
   confirmation: {
-    eyebrow: "You're booked 🎉",
-    h1: "Your call is confirmed.",
-    sub: "Watch the short video below before we speak — it walks you through exactly how the session runs and how to get the most out of it. Then check the requirements underneath so you're set up to go.",
-    // YouTube/Vimeo/Mux embed URL for the congrats / run-through video.
-    // Same format as the hero video. Leave empty to show the placeholder.
+    eyebrow: "Booking confirmed",
+    h1: "You're in. Now watch the video below.",
+    sub: "It's short, and it's required. Inside, I walk you through exactly how your call runs and how to walk away with the most. Watch it now — then lock in the checklist underneath so you're ready to go.",
+    // Small badge sitting directly above the video to make it unmissable.
+    videoBadge: "Watch this first — required before your call",
+    // YouTube/Vimeo/Mux embed URL — or a raw file dropped in /public
+    // (.mp4/.webm/.mov). Leave empty to show the placeholder.
     videoEmbedUrl: "" as string,
     videoThumbnail: "" as string,
     requirements: {
-      header: "Before your call — please make sure you have:",
-      note: "These aren't optional. The session is hands-on and we cover a lot of ground. If you're not set up properly, we won't be able to do the work justice — so please lock these in before we speak.",
+      header: "Before your call — lock these in.",
+      note: "Non-negotiable. The session is hands-on and we move fast. Show up without these and we can't do the real work — so get set up before we speak.",
       items: [
         {
-          title: "A laptop or desktop computer",
-          body: "We'll be sharing screens and walking through the system together. A phone or tablet won't cut it — you need a proper computer.",
+          title: "A laptop or desktop",
+          body: "We're sharing screens and building inside the system together. Phones and tablets won't cut it.",
         },
         {
-          title: "45–60 minutes blocked off",
-          body: "Pencil out a full hour with nothing scheduled either side. We use every minute and you don't want to be cut short.",
+          title: "A clear 45–60 minutes",
+          body: "Block a full hour with nothing either side. We use every minute — don't get cut short.",
         },
         {
-          title: "A quiet space, no distractions",
-          body: "Somewhere you can focus and talk freely — no driving, no walking around, no background noise. Treat it like an important meeting, because it is.",
+          title: "A quiet, private space",
+          body: "Somewhere you can focus and speak freely. No driving, no walking around, no background noise. Treat it like the meeting it is.",
         },
         {
-          title: "Headphones and a stable connection",
-          body: "Clear audio makes a huge difference. Headphones plus solid Wi-Fi means nothing gets lost.",
+          title: "Headphones + strong Wi-Fi",
+          body: "Clean audio changes everything. Headphones and a solid connection mean nothing gets lost.",
         },
         {
-          title: "A notepad — and an open mind",
-          body: "Come ready to take notes and think about your own sales process honestly. The more open you are, the more you'll walk away with.",
+          title: "A notepad and an open mind",
+          body: "Come ready to take notes and look at your own sales process honestly. The more open you are, the more you leave with.",
         },
       ],
     },
-    resultsHeader: "While you wait — here's exactly what this system produces.",
-    resultsSub: "The results below aren't theory. This is the same system we'll be talking through on your call.",
+    resultsHeader: "While you wait — here's what this system produces.",
+    resultsSub: "Not theory. This is the exact system we'll walk through on your call.",
   },
 
   footer: {
