@@ -27,12 +27,6 @@ export default function ConfirmationHero() {
         </div>
 
         <div className="mx-auto mt-12 w-full max-w-video">
-          <div className="mb-4 flex items-center justify-center gap-2 text-accentSoft">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
-              <path d="M8 5v14l11-7L8 5Z" />
-            </svg>
-            <span className="text-sm font-semibold uppercase tracking-wide">{videoTitle}</span>
-          </div>
           <VideoPlayer embedUrl={videoEmbedUrl} thumbnail={videoThumbnail} title={videoTitle} />
         </div>
       </div>
