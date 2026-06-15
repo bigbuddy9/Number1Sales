@@ -28,6 +28,25 @@ function findStartTime(data: unknown): string | null {
   return null;
 }
 
+// Pull the attendee name out of the payload, for first-name personalization.
+function findName(data: unknown): string | null {
+  if (!data || typeof data !== "object") return null;
+  const d = data as Record<string, unknown>;
+  if (typeof d.attendeeName === "string" && d.attendeeName) return d.attendeeName;
+  if (typeof d.name === "string" && d.name) return d.name;
+  const booking = d.booking;
+  if (booking && typeof booking === "object") {
+    const b = booking as Record<string, unknown>;
+    if (typeof b.attendeeName === "string" && b.attendeeName) return b.attendeeName;
+    const attendees = b.attendees;
+    if (Array.isArray(attendees) && attendees[0] && typeof attendees[0] === "object") {
+      const n = (attendees[0] as Record<string, unknown>).name;
+      if (typeof n === "string" && n) return n;
+    }
+  }
+  return null;
+}
+
 export default function CalEmbed({ calLink, namespace = "default", minHeight = 600 }: Props) {
   useEffect(() => {
     (async () => {
@@ -61,8 +80,10 @@ export default function CalEmbed({ calLink, namespace = "default", minHeight = 6
           // Temporary: confirms the payload shape during verification.
           console.log("[cal:bookingSuccessful]", data);
           const startTime = findStartTime(data);
+          const name = findName(data);
           const url = new URL("/confirmed", window.location.origin);
           if (startTime) url.searchParams.set("startTime", startTime);
+          if (name) url.searchParams.set("attendeeName", name);
           window.location.href = url.toString();
         },
       });
