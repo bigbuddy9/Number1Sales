@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import { site } from "@/lib/site";
 import VideoPlayer from "./VideoPlayer";
 import ConfirmationBadge from "./ConfirmationBadge";
+import ConfirmationHeadline from "./ConfirmationHeadline";
 
 export default function ConfirmationHero() {
   const { eyebrow, h1, videoTitle, videoEmbedUrl, videoThumbnail } = site.confirmation;
@@ -23,7 +24,9 @@ export default function ConfirmationHero() {
           >
             <ConfirmationBadge />
           </Suspense>
-          <h1 className="h1 mt-6 text-balance">{h1}</h1>
+          <Suspense fallback={<h1 className="h1 mt-6 text-balance">{h1}</h1>}>
+            <ConfirmationHeadline />
+          </Suspense>
         </div>
 
         <div className="mx-auto mt-12 w-full max-w-video">
