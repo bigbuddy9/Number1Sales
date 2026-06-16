@@ -17,11 +17,10 @@ export const site = {
   hero: {
     h1: "Implement the #1 solar sales system into your business.",
     sub: "Proven to generate over $100m / year, a replicable process you can plug directly into your company today to 2-5x your revenue, fast.",
-    // YouTube/Vimeo/Mux embed URL. Leave empty to show the placeholder.
-    // If YouTube, use the /embed/VIDEO_ID form — ?rel=0 is added automatically.
-    videoEmbedUrl: "" as string,
-    // Path inside /public for the click-to-play thumbnail (creator's face).
-    // Leave empty to use a built-in placeholder.
+    // No-skip player source: a Cloudflare Stream HLS manifest (.m3u8) or an
+    // .mp4 URL. Leave empty to show the placeholder.
+    videoSrc: "" as string,
+    // Poster image (path in /public or absolute URL) shown before play.
     videoThumbnail: "" as string,
     cta: "Book a Call",
   },
@@ -154,9 +153,10 @@ export const site = {
     h1: "Must watch this video before your call.",
     // Small label shown directly above the video player.
     videoTitle: "Your pre-call briefing",
-    // YouTube/Vimeo/Mux embed URL — or a raw file dropped in /public
-    // (.mp4/.webm/.mov). Leave empty to show the placeholder.
-    videoEmbedUrl: "" as string,
+    // No-skip player source: a Cloudflare Stream HLS manifest (.m3u8) or an
+    // .mp4 URL. Leave empty to show the placeholder.
+    videoSrc: "" as string,
+    // Poster image (path in /public or absolute URL) shown before play.
     videoThumbnail: "" as string,
     requirements: {
       header: "How to get the most from your call.",

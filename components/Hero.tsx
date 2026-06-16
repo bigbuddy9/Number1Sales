@@ -1,9 +1,9 @@
 import { site } from "@/lib/site";
-import VideoPlayer from "./VideoPlayer";
+import NoSkipPlayer from "./NoSkipPlayer";
 import CalEmbed from "./CalEmbed";
 
 export default function Hero() {
-  const { h1, sub, videoEmbedUrl, videoThumbnail } = site.hero;
+  const { h1, sub, videoSrc, videoThumbnail } = site.hero;
 
   return (
     <section className="relative">
@@ -14,7 +14,7 @@ export default function Hero() {
         </div>
 
         <div className="mx-auto mt-12 w-full max-w-video">
-          <VideoPlayer embedUrl={videoEmbedUrl} thumbnail={videoThumbnail} title="Intro" />
+          <NoSkipPlayer src={videoSrc} poster={videoThumbnail} title="Intro" />
         </div>
 
         <div className="mx-auto mt-12 w-full max-w-6xl">
