@@ -154,9 +154,9 @@ export const site = {
     // Small label shown directly above the video player.
     videoTitle: "Your pre-call briefing",
     // No-skip player source: a Cloudflare Stream HLS manifest (.m3u8) or an
-    // .mp4 URL. Leave empty to show the placeholder.
+    // .mp4 URL. Raw MP4 from R2 = exact source quality, no re-encode.
     videoSrc:
-      "https://customer-vf97vhnpr3znxycz.cloudflarestream.com/393e011f3146222bc1df140b58f49e47/manifest/video.m3u8",
+      "https://pub-5e2c7df6c10c4ad08bc1a296cd537a28.r2.dev/Post%20Call%20Confirmation%20Video%20-%20SCALE%20SOLAR-esv2-80p-bg-10p-music-10p.mp4",
     // Poster image (path in /public or absolute URL) shown before play.
     videoThumbnail:
       "https://customer-vf97vhnpr3znxycz.cloudflarestream.com/393e011f3146222bc1df140b58f49e47/thumbnails/thumbnail.jpg?height=1080",
