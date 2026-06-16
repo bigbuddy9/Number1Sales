@@ -53,10 +53,25 @@ export default function NoSkipPlayer({ src, poster, title }: Props) {
           video.src = src;
           return;
         }
-        const hls = new HlsCtor({ enableWorker: true });
+        const hls = new HlsCtor({
+          enableWorker: true,
+          // Don't downscale quality to the player's pixel size, and assume a
+          // healthy connection so it doesn't open on the lowest rendition.
+          capLevelToPlayerSize: false,
+          abrEwmaDefaultEstimate: 6_000_000,
+          startLevel: -1,
+        });
         hlsRef.current = hls;
         hls.loadSource(src);
         hls.attachMedia(video);
+        // Start on the highest-quality rendition for a crisp first impression,
+        // then hand back to adaptive after the first segment is buffered.
+        hls.on(HlsCtor.Events.MANIFEST_PARSED, () => {
+          if (hls.levels?.length) hls.currentLevel = hls.levels.length - 1;
+        });
+        hls.once(HlsCtor.Events.FRAG_BUFFERED, () => {
+          hls.currentLevel = -1;
+        });
         hls.on(HlsCtor.Events.SUBTITLE_TRACKS_UPDATED, (_evt, data) => {
           setHasCaptions((data?.subtitleTracks?.length ?? 0) > 0);
         });
