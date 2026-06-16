@@ -65,9 +65,13 @@ export default function NoSkipPlayer({ src, poster, title }: Props) {
         hls.loadSource(src);
         hls.attachMedia(video);
         // Start on the highest-quality rendition for a crisp first impression,
-        // then hand back to adaptive after the first segment is buffered.
+        // then hand back to adaptive after the first segment is buffered. Also
+        // lock the frame to the stream's real dimensions (no forced 16:9 / bars).
         hls.on(HlsCtor.Events.MANIFEST_PARSED, () => {
-          if (hls.levels?.length) hls.currentLevel = hls.levels.length - 1;
+          if (!hls.levels?.length) return;
+          hls.currentLevel = hls.levels.length - 1;
+          const top = hls.levels[hls.levels.length - 1];
+          if (top?.width && top?.height) setAspect(`${top.width} / ${top.height}`);
         });
         hls.once(HlsCtor.Events.FRAG_BUFFERED, () => {
           hls.currentLevel = -1;
