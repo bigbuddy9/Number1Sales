@@ -155,9 +155,11 @@ export const site = {
     videoTitle: "Your pre-call briefing",
     // No-skip player source: a Cloudflare Stream HLS manifest (.m3u8) or an
     // .mp4 URL. Leave empty to show the placeholder.
-    videoSrc: "" as string,
+    videoSrc:
+      "https://customer-vf97vhnpr3znxycz.cloudflarestream.com/393e011f3146222bc1df140b58f49e47/manifest/video.m3u8",
     // Poster image (path in /public or absolute URL) shown before play.
-    videoThumbnail: "" as string,
+    videoThumbnail:
+      "https://customer-vf97vhnpr3znxycz.cloudflarestream.com/393e011f3146222bc1df140b58f49e47/thumbnails/thumbnail.jpg?height=720",
     requirements: {
       header: "How to get the most from your call.",
       note: "Before we jump on, make sure you've got:",
