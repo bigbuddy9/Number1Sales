@@ -150,7 +150,7 @@ export const site = {
   // https://scalesolar.co/confirmed
   confirmation: {
     eyebrow: "Booking confirmed",
-    h1: "Must watch this video before your call.",
+    h1: "Must watch this video before your call",
     // Small label shown directly above the video player.
     videoTitle: "Your pre-call briefing",
     // No-skip player source: a Cloudflare Stream HLS manifest (.m3u8) or an

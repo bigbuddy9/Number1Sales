@@ -28,9 +28,24 @@ export default function ConfirmationHero() {
           <Suspense fallback={<h1 className="h1 mt-6 text-balance">{h1}</h1>}>
             <ConfirmationHeadline />
           </Suspense>
+          <div className="mt-6 flex justify-center" aria-hidden>
+            <svg
+              className="animate-bounce text-accent"
+              width="30"
+              height="30"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M6 9l6 6 6-6" />
+            </svg>
+          </div>
         </div>
 
-        <div className="mx-auto mt-12 w-full max-w-video">
+        <div className="mx-auto mt-8 w-full max-w-5xl">
           <NoSkipPlayer
             src={videoSrc}
             poster={videoThumbnail}
