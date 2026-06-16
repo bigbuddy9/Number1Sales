@@ -11,7 +11,7 @@ type Props = {
   title?: string;
 };
 
-const SPEEDS = [1, 1.25, 1.5, 2];
+const SPEEDS = [1, 1.25, 1.5];
 
 function fmt(t: number): string {
   if (!isFinite(t) || t < 0) t = 0;
@@ -24,10 +24,11 @@ export default function NoSkipPlayer({ src, poster, title }: Props) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const hlsRef = useRef<Hls | null>(null);
   const maxTimeRef = useRef(0);
+  const autoStartedRef = useRef(false);
 
-  const [started, setStarted] = useState(false);
   const [playing, setPlaying] = useState(false);
-  const [muted, setMuted] = useState(false);
+  const [unmuted, setUnmuted] = useState(false);
+  const [muted, setMuted] = useState(true);
   const [duration, setDuration] = useState(0);
   const [current, setCurrent] = useState(0);
   const [speed, setSpeed] = useState(1);
@@ -75,6 +76,32 @@ export default function NoSkipPlayer({ src, poster, title }: Props) {
     return () => video.textTracks.removeEventListener?.("addtrack", sync);
   }, [src]);
 
+  // Autoplay muted the moment it can play (the signature VSL move).
+  const onCanPlay = useCallback(() => {
+    const v = videoRef.current;
+    if (!v || autoStartedRef.current) return;
+    autoStartedRef.current = true;
+    v.muted = true;
+    setMuted(true);
+    v.play().catch(() => {
+      // Autoplay blocked — the "tap for sound" overlay click will start it.
+    });
+  }, []);
+
+  // Click "tap for sound": unmute and restart from the beginning, with the
+  // no-skip watermark reset so they watch the real (audio) run from zero.
+  const unlockSound = useCallback(() => {
+    const v = videoRef.current;
+    if (!v) return;
+    v.muted = false;
+    setMuted(false);
+    setUnmuted(true);
+    v.currentTime = 0;
+    maxTimeRef.current = 0;
+    v.playbackRate = speed;
+    v.play().catch(() => {});
+  }, [speed]);
+
   // Block skipping ahead: allow rewind, snap back any forward jump.
   const guardSeek = useCallback(() => {
     const v = videoRef.current;
@@ -87,7 +114,6 @@ export default function NoSkipPlayer({ src, poster, title }: Props) {
   const onTimeUpdate = useCallback(() => {
     const v = videoRef.current;
     if (!v) return;
-    // Advance the watched watermark only during real, contiguous playback.
     if (v.currentTime > maxTimeRef.current && v.currentTime - maxTimeRef.current < 1.5) {
       maxTimeRef.current = v.currentTime;
     }
@@ -97,12 +123,11 @@ export default function NoSkipPlayer({ src, poster, title }: Props) {
   const togglePlay = useCallback(() => {
     const v = videoRef.current;
     if (!v) return;
-    setStarted(true);
     if (v.paused) v.play();
     else v.pause();
   }, []);
 
-  const cycleSpeedTo = (s: number) => {
+  const setSpeedTo = (s: number) => {
     const v = videoRef.current;
     if (v) v.playbackRate = s;
     setSpeed(s);
@@ -161,7 +186,9 @@ export default function NoSkipPlayer({ src, poster, title }: Props) {
         poster={poster || undefined}
         className="h-full w-full"
         playsInline
-        onClick={togglePlay}
+        preload="auto"
+        onClick={unmuted ? togglePlay : undefined}
+        onCanPlay={onCanPlay}
         onPlay={() => setPlaying(true)}
         onPause={() => setPlaying(false)}
         onTimeUpdate={onTimeUpdate}
@@ -171,8 +198,26 @@ export default function NoSkipPlayer({ src, poster, title }: Props) {
         aria-label={title ?? "Video"}
       />
 
-      {/* Center play overlay (before start / when paused). */}
-      {!playing ? (
+      {/* "Tap for sound" overlay — shown over the muted autoplay. */}
+      {!unmuted ? (
+        <button
+          type="button"
+          onClick={unlockSound}
+          className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-black/45 text-white transition hover:bg-black/35"
+          aria-label="Tap for sound"
+        >
+          <span className="flex h-20 w-20 items-center justify-center rounded-full bg-accent text-accentInk shadow-[0_20px_60px_-20px_rgba(212,175,55,0.6)]">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+              <path d="M4 9v6h4l5 5V4L8 9H4Zm12 3a4 4 0 0 0-2-3.46v6.92A4 4 0 0 0 16 12Zm-2-7.92v2.06a6 6 0 0 1 0 11.72v2.06a8 8 0 0 0 0-15.84Z" />
+            </svg>
+          </span>
+          <span className="text-base font-semibold tracking-wide">Tap for sound</span>
+          <span className="text-xs text-white/70">Your video is playing</span>
+        </button>
+      ) : null}
+
+      {/* Center play overlay (after unmute, when paused). */}
+      {unmuted && !playing ? (
         <button
           type="button"
           onClick={togglePlay}
@@ -187,9 +232,9 @@ export default function NoSkipPlayer({ src, poster, title }: Props) {
         </button>
       ) : null}
 
-      {/* Control bar. No draggable scrubber — skipping ahead is blocked. */}
-      {started ? (
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 flex flex-col gap-2 bg-gradient-to-t from-black/80 to-transparent p-3 opacity-0 transition group-hover:opacity-100 [.paused_&]:opacity-100">
+      {/* Control bar (after unmute). No draggable scrubber, no total time. */}
+      {unmuted ? (
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 flex flex-col gap-2 bg-gradient-to-t from-black/80 to-transparent p-3 opacity-0 transition group-hover:opacity-100">
           {/* Non-interactive progress indicator. */}
           <div className="h-1 w-full overflow-hidden rounded-full bg-white/20">
             <div className="h-full bg-accent" style={{ width: `${pct}%` }} />
@@ -208,9 +253,7 @@ export default function NoSkipPlayer({ src, poster, title }: Props) {
               )}
             </button>
 
-            <span className="text-xs tabular-nums text-white/80">
-              {fmt(current)} / {fmt(duration)}
-            </span>
+            <span className="text-xs tabular-nums text-white/80">{fmt(current)}</span>
 
             <div className="ml-auto flex items-center gap-3">
               {/* Speed */}
@@ -229,7 +272,7 @@ export default function NoSkipPlayer({ src, poster, title }: Props) {
                       <button
                         key={s}
                         type="button"
-                        onClick={() => cycleSpeedTo(s)}
+                        onClick={() => setSpeedTo(s)}
                         className={`px-3 py-1.5 text-left hover:bg-white/10 ${
                           s === speed ? "text-accent" : "text-white/90"
                         }`}
