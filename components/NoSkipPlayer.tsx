@@ -9,6 +9,11 @@ type Props = {
   /** Poster image shown before play (path in /public or absolute URL). */
   poster?: string;
   title?: string;
+  /**
+   * Fraction of the video's width to keep, to crop baked-in black side bars.
+   * 1 = no crop. e.g. 0.8 keeps the centre 80% and clips the bars.
+   */
+  crop?: number;
 };
 
 const SPEEDS = [1, 1.25, 1.5];
@@ -20,7 +25,7 @@ function fmt(t: number): string {
   return `${m}:${s.toString().padStart(2, "0")}`;
 }
 
-export default function NoSkipPlayer({ src, poster, title }: Props) {
+export default function NoSkipPlayer({ src, poster, title, crop = 1 }: Props) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const hlsRef = useRef<Hls | null>(null);
   const maxTimeRef = useRef(0);
@@ -71,7 +76,7 @@ export default function NoSkipPlayer({ src, poster, title }: Props) {
           if (!hls.levels?.length) return;
           hls.currentLevel = hls.levels.length - 1;
           const top = hls.levels[hls.levels.length - 1];
-          if (top?.width && top?.height) setAspect(`${top.width} / ${top.height}`);
+          if (top?.width && top?.height) setAspect(`${top.width * crop} / ${top.height}`);
         });
         hls.once(HlsCtor.Events.FRAG_BUFFERED, () => {
           hls.currentLevel = -1;
@@ -94,7 +99,7 @@ export default function NoSkipPlayer({ src, poster, title }: Props) {
     sync();
     video.textTracks.addEventListener?.("addtrack", sync);
     return () => video.textTracks.removeEventListener?.("addtrack", sync);
-  }, [src]);
+  }, [src, crop]);
 
   // Autoplay muted the moment it can play (the signature VSL move).
   const onCanPlay = useCallback(() => {
@@ -207,7 +212,7 @@ export default function NoSkipPlayer({ src, poster, title }: Props) {
       <video
         ref={videoRef}
         poster={poster || undefined}
-        className="h-full w-full object-contain"
+        className="h-full w-full object-cover"
         playsInline
         preload="auto"
         onClick={unmuted ? togglePlay : undefined}
@@ -220,7 +225,7 @@ export default function NoSkipPlayer({ src, poster, title }: Props) {
         onLoadedMetadata={(e) => {
           const v = e.currentTarget;
           setDuration(v.duration);
-          if (v.videoWidth && v.videoHeight) setAspect(`${v.videoWidth} / ${v.videoHeight}`);
+          if (v.videoWidth && v.videoHeight) setAspect(`${v.videoWidth * crop} / ${v.videoHeight}`);
         }}
         aria-label={title ?? "Video"}
       />

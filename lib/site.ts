@@ -160,6 +160,8 @@ export const site = {
     // Poster image (path in /public or absolute URL) shown before play.
     videoThumbnail:
       "https://customer-vf97vhnpr3znxycz.cloudflarestream.com/393e011f3146222bc1df140b58f49e47/thumbnails/thumbnail.jpg?height=1080",
+    // Fraction of width to keep, to crop baked-in black side bars (1 = none).
+    videoCrop: 0.8,
     requirements: {
       header: "How to get the most from your call.",
       note: "Before we jump on, make sure you've got:",
