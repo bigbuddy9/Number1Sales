@@ -161,7 +161,7 @@ export const site = {
     // Empty = no Stream dependency (the video autoplays muted anyway).
     videoThumbnail: "" as string,
     // Fraction of width to keep, to crop baked-in black side bars (1 = none).
-    videoCrop: 0.88,
+    videoCrop: 1,
     // WebVTT subtitles file (path in /public). Empty = no captions track.
     captionsSrc: "" as string,
     requirements: {
