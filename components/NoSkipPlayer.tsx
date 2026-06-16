@@ -16,6 +16,8 @@ type Props = {
   crop?: number;
   /** WebVTT subtitles file (same-origin path in /public). */
   captionsSrc?: string;
+  /** Show subtitles by default (e.g. during the muted autoplay). */
+  defaultCaptions?: boolean;
 };
 
 const SPEEDS = [1, 1.25, 1.5];
@@ -27,7 +29,14 @@ function fmt(t: number): string {
   return `${m}:${s.toString().padStart(2, "0")}`;
 }
 
-export default function NoSkipPlayer({ src, poster, title, crop = 1, captionsSrc }: Props) {
+export default function NoSkipPlayer({
+  src,
+  poster,
+  title,
+  crop = 1,
+  captionsSrc,
+  defaultCaptions = false,
+}: Props) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const hlsRef = useRef<Hls | null>(null);
   const maxTimeRef = useRef(0);
@@ -42,7 +51,7 @@ export default function NoSkipPlayer({ src, poster, title, crop = 1, captionsSrc
   const [speed, setSpeed] = useState(1);
   const [speedOpen, setSpeedOpen] = useState(false);
   const [hasCaptions, setHasCaptions] = useState(false);
-  const [captionsOn, setCaptionsOn] = useState(false);
+  const [captionsOn, setCaptionsOn] = useState(defaultCaptions);
 
   // Load the source (HLS via hls.js, or native for Safari/mp4).
   useEffect(() => {
@@ -168,18 +177,21 @@ export default function NoSkipPlayer({ src, poster, title, crop = 1, captionsSrc
     setMuted(v.muted);
   };
 
-  const toggleCaptions = () => {
-    const next = !captionsOn;
-    setCaptionsOn(next);
+  const toggleCaptions = () => setCaptionsOn((o) => !o);
+
+  // Apply the captions on/off state to the active track whenever it changes
+  // (also handles the default-on case once the track becomes available).
+  useEffect(() => {
+    if (!hasCaptions) return;
     const hls = hlsRef.current;
     if (hls) {
-      hls.subtitleDisplay = next;
-      hls.subtitleTrack = next ? 0 : -1;
+      hls.subtitleDisplay = captionsOn;
+      hls.subtitleTrack = captionsOn ? 0 : -1;
     } else {
       const v = videoRef.current;
-      if (v && v.textTracks[0]) v.textTracks[0].mode = next ? "showing" : "disabled";
+      if (v && v.textTracks[0]) v.textTracks[0].mode = captionsOn ? "showing" : "disabled";
     }
-  };
+  }, [hasCaptions, captionsOn]);
 
   const toggleFullscreen = () => {
     const el = videoRef.current?.parentElement;

@@ -164,6 +164,8 @@ export const site = {
     videoCrop: 1,
     // WebVTT subtitles file (path in /public). Empty = no captions track.
     captionsSrc: "/captions/confirmation.vtt" as string,
+    // Show subtitles by default (they autoplay muted, so captions help).
+    captionsDefault: true,
     requirements: {
       header: "How to get the most from your call.",
       note: "Before we jump on, make sure you've got:",

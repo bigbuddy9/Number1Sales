@@ -5,7 +5,7 @@ import ConfirmationBadge from "./ConfirmationBadge";
 import ConfirmationHeadline from "./ConfirmationHeadline";
 
 export default function ConfirmationHero() {
-  const { eyebrow, h1, videoTitle, videoSrc, videoThumbnail, videoCrop, captionsSrc } =
+  const { eyebrow, h1, videoTitle, videoSrc, videoThumbnail, videoCrop, captionsSrc, captionsDefault } =
     site.confirmation;
 
   return (
@@ -37,6 +37,7 @@ export default function ConfirmationHero() {
             title={videoTitle}
             crop={videoCrop}
             captionsSrc={captionsSrc}
+            defaultCaptions={captionsDefault}
           />
         </div>
       </div>
