@@ -31,6 +31,7 @@ export default function NoSkipPlayer({ src, poster, title }: Props) {
   const [muted, setMuted] = useState(true);
   const [duration, setDuration] = useState(0);
   const [current, setCurrent] = useState(0);
+  const [aspect, setAspect] = useState("16 / 9");
   const [speed, setSpeed] = useState(1);
   const [speedOpen, setSpeedOpen] = useState(false);
   const [hasCaptions, setHasCaptions] = useState(false);
@@ -179,12 +180,15 @@ export default function NoSkipPlayer({ src, poster, title }: Props) {
   const pct = duration > 0 ? Math.min(100, (current / duration) * 100) : 0;
 
   return (
-    <div className="group relative aspect-video overflow-hidden rounded-2xl border border-border bg-black">
+    <div
+      className="group relative w-full overflow-hidden rounded-2xl border border-border bg-black"
+      style={{ aspectRatio: aspect }}
+    >
       {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
       <video
         ref={videoRef}
         poster={poster || undefined}
-        className="h-full w-full"
+        className="h-full w-full object-contain"
         playsInline
         preload="auto"
         onClick={unmuted ? togglePlay : undefined}
@@ -194,7 +198,11 @@ export default function NoSkipPlayer({ src, poster, title }: Props) {
         onTimeUpdate={onTimeUpdate}
         onSeeking={guardSeek}
         onSeeked={guardSeek}
-        onLoadedMetadata={(e) => setDuration(e.currentTarget.duration)}
+        onLoadedMetadata={(e) => {
+          const v = e.currentTarget;
+          setDuration(v.duration);
+          if (v.videoWidth && v.videoHeight) setAspect(`${v.videoWidth} / ${v.videoHeight}`);
+        }}
         aria-label={title ?? "Video"}
       />
 
@@ -203,16 +211,15 @@ export default function NoSkipPlayer({ src, poster, title }: Props) {
         <button
           type="button"
           onClick={unlockSound}
-          className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-black/45 text-white transition hover:bg-black/35"
+          className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-black/30 text-white transition hover:bg-black/20"
           aria-label="Tap for sound"
         >
-          <span className="flex h-20 w-20 items-center justify-center rounded-full bg-accent text-accentInk shadow-[0_20px_60px_-20px_rgba(212,175,55,0.6)]">
-            <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+          <span className="flex h-[72px] w-[72px] items-center justify-center rounded-full bg-white/12 ring-1 ring-white/40 backdrop-blur-md transition group-hover:scale-105">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
               <path d="M4 9v6h4l5 5V4L8 9H4Zm12 3a4 4 0 0 0-2-3.46v6.92A4 4 0 0 0 16 12Zm-2-7.92v2.06a6 6 0 0 1 0 11.72v2.06a8 8 0 0 0 0-15.84Z" />
             </svg>
           </span>
-          <span className="text-base font-semibold tracking-wide">Tap for sound</span>
-          <span className="text-xs text-white/70">Your video is playing</span>
+          <span className="text-sm font-medium tracking-wide text-white/95">Tap for sound</span>
         </button>
       ) : null}
 
@@ -221,11 +228,11 @@ export default function NoSkipPlayer({ src, poster, title }: Props) {
         <button
           type="button"
           onClick={togglePlay}
-          className="absolute inset-0 flex items-center justify-center bg-black/20 transition hover:bg-black/10"
+          className="absolute inset-0 flex items-center justify-center bg-black/15 transition hover:bg-black/5"
           aria-label="Play video"
         >
-          <span className="flex h-20 w-20 items-center justify-center rounded-full bg-accent text-accentInk shadow-[0_20px_60px_-20px_rgba(212,175,55,0.6)] transition group-hover:scale-105">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+          <span className="flex h-[72px] w-[72px] items-center justify-center rounded-full bg-white/12 text-white ring-1 ring-white/40 backdrop-blur-md transition group-hover:scale-105">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
               <path d="M8 5v14l11-7L8 5Z" />
             </svg>
           </span>

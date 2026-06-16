@@ -159,7 +159,7 @@ export const site = {
       "https://customer-vf97vhnpr3znxycz.cloudflarestream.com/393e011f3146222bc1df140b58f49e47/manifest/video.m3u8",
     // Poster image (path in /public or absolute URL) shown before play.
     videoThumbnail:
-      "https://customer-vf97vhnpr3znxycz.cloudflarestream.com/393e011f3146222bc1df140b58f49e47/thumbnails/thumbnail.jpg?height=720",
+      "https://customer-vf97vhnpr3znxycz.cloudflarestream.com/393e011f3146222bc1df140b58f49e47/thumbnails/thumbnail.jpg?height=1080",
     requirements: {
       header: "How to get the most from your call.",
       note: "Before we jump on, make sure you've got:",
