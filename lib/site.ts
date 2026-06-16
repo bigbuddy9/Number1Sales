@@ -163,7 +163,7 @@ export const site = {
     // Fraction of width to keep, to crop baked-in black side bars (1 = none).
     videoCrop: 1,
     // WebVTT subtitles file (path in /public). Empty = no captions track.
-    captionsSrc: "" as string,
+    captionsSrc: "/captions/confirmation.vtt" as string,
     requirements: {
       header: "How to get the most from your call.",
       note: "Before we jump on, make sure you've got:",
