@@ -158,10 +158,12 @@ export const site = {
     videoSrc:
       "https://pub-5e2c7df6c10c4ad08bc1a296cd537a28.r2.dev/Post%20Call%20Confirmation%20Video%20-%20SCALE%20SOLAR-esv2-80p-bg-10p-music-10p.mp4",
     // Poster image (path in /public or absolute URL) shown before play.
-    videoThumbnail:
-      "https://customer-vf97vhnpr3znxycz.cloudflarestream.com/393e011f3146222bc1df140b58f49e47/thumbnails/thumbnail.jpg?height=1080",
+    // Empty = no Stream dependency (the video autoplays muted anyway).
+    videoThumbnail: "" as string,
     // Fraction of width to keep, to crop baked-in black side bars (1 = none).
-    videoCrop: 0.8,
+    videoCrop: 0.88,
+    // WebVTT subtitles file (path in /public). Empty = no captions track.
+    captionsSrc: "" as string,
     requirements: {
       header: "How to get the most from your call.",
       note: "Before we jump on, make sure you've got:",

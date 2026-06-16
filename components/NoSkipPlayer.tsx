@@ -14,6 +14,8 @@ type Props = {
    * 1 = no crop. e.g. 0.8 keeps the centre 80% and clips the bars.
    */
   crop?: number;
+  /** WebVTT subtitles file (same-origin path in /public). */
+  captionsSrc?: string;
 };
 
 const SPEEDS = [1, 1.25, 1.5];
@@ -25,7 +27,7 @@ function fmt(t: number): string {
   return `${m}:${s.toString().padStart(2, "0")}`;
 }
 
-export default function NoSkipPlayer({ src, poster, title, crop = 1 }: Props) {
+export default function NoSkipPlayer({ src, poster, title, crop = 1, captionsSrc }: Props) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const hlsRef = useRef<Hls | null>(null);
   const maxTimeRef = useRef(0);
@@ -228,7 +230,11 @@ export default function NoSkipPlayer({ src, poster, title, crop = 1 }: Props) {
           if (v.videoWidth && v.videoHeight) setAspect(`${v.videoWidth * crop} / ${v.videoHeight}`);
         }}
         aria-label={title ?? "Video"}
-      />
+      >
+        {captionsSrc ? (
+          <track kind="subtitles" src={captionsSrc} srcLang="en" label="English" />
+        ) : null}
+      </video>
 
       {/* "Tap for sound" overlay — shown over the muted autoplay. */}
       {!unmuted ? (

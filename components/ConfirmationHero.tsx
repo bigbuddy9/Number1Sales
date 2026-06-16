@@ -5,7 +5,8 @@ import ConfirmationBadge from "./ConfirmationBadge";
 import ConfirmationHeadline from "./ConfirmationHeadline";
 
 export default function ConfirmationHero() {
-  const { eyebrow, h1, videoTitle, videoSrc, videoThumbnail, videoCrop } = site.confirmation;
+  const { eyebrow, h1, videoTitle, videoSrc, videoThumbnail, videoCrop, captionsSrc } =
+    site.confirmation;
 
   return (
     <section className="relative">
@@ -30,7 +31,13 @@ export default function ConfirmationHero() {
         </div>
 
         <div className="mx-auto mt-12 w-full max-w-video">
-          <NoSkipPlayer src={videoSrc} poster={videoThumbnail} title={videoTitle} crop={videoCrop} />
+          <NoSkipPlayer
+            src={videoSrc}
+            poster={videoThumbnail}
+            title={videoTitle}
+            crop={videoCrop}
+            captionsSrc={captionsSrc}
+          />
         </div>
       </div>
     </section>
