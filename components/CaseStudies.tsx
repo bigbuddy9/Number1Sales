@@ -17,7 +17,11 @@ export default function CaseStudies() {
           <h2 className="h2">{header}</h2>
           {cases.length === 0 ? (
             <p className="mt-6 body-lg">{placeholder}</p>
-          ) : null}
+          ) : (
+            <p className="mt-6 body-lg">
+              Three solar companies. Real data, verified results. This is what happens when the system gets installed.
+            </p>
+          )}
         </div>
         {cases.length > 0 ? (
           <div className="prose-x mt-8">
@@ -58,6 +62,7 @@ export default function CaseStudies() {
                         alt={s.alt}
                         images={allImages}
                         index={i}
+                        fit="contain"
                         aspect="aspect-[4/3]"
                       />
                     );
