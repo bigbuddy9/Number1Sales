@@ -3,7 +3,7 @@ import NoSkipPlayer from "./NoSkipPlayer";
 import CalEmbed from "./CalEmbed";
 
 export default function Hero() {
-  const { h1, sub, videoSrc, videoThumbnail } = site.hero;
+  const { h1, sub, videoSrc, videoThumbnail, videoCrop, captionsSrc, captionsDefault } = site.hero;
 
   return (
     <section className="relative">
@@ -13,8 +13,15 @@ export default function Hero() {
           <p className="mx-auto mt-6 max-w-2xl text-body md:text-bodyLg text-mutedHi">{sub}</p>
         </div>
 
-        <div className="mx-auto mt-12 w-full max-w-video">
-          <NoSkipPlayer src={videoSrc} poster={videoThumbnail} title="Intro" />
+        <div className="mx-auto mt-12 w-full max-w-5xl">
+          <NoSkipPlayer
+            src={videoSrc}
+            poster={videoThumbnail}
+            title="Intro"
+            crop={videoCrop}
+            captionsSrc={captionsSrc}
+            defaultCaptions={captionsDefault}
+          />
         </div>
 
         <div className="mx-auto mt-12 w-full max-w-6xl">

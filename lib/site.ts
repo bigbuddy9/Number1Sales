@@ -12,8 +12,17 @@ export const site = {
   hero: {
     h1: "Implement the #1 solar sales system into your business.",
     sub: "Proven to generate over $100m / year, a replicable process you can plug directly into your company today to 2-5x your revenue, fast.",
-    videoSrc: "" as string,
+    // No-skip player source: raw .mp4 from R2 (exact quality) or an HLS .m3u8.
+    videoSrc:
+      "https://pub-5e2c7df6c10c4ad08bc1a296cd537a28.r2.dev/Solar%20Business%20VSL_v13.mp4",
+    // Poster image (path in /public or absolute URL). Empty = none.
     videoThumbnail: "" as string,
+    // Fraction of width to keep, to crop baked-in black side bars (1 = none).
+    videoCrop: 1,
+    // WebVTT subtitles file (path in /public). Empty = no captions track.
+    captionsSrc: "" as string,
+    // Show subtitles by default (it autoplays muted, so captions help).
+    captionsDefault: true,
     cta: "Book a Call",
   },
 
