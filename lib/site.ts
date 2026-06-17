@@ -122,6 +122,7 @@ export const site = {
       "Every record, every #1 finish, every dollar, every client result — direct evidence, not claims.",
       "These results weren't down to talent. They came from executing a clear, repeatable process built around optimising every stage of the solar sales cycle from start to finish.",
       "Pure logic. If you follow the same framework, you get the same output. It really is as simple as that.",
+      "The only question is whether you want results like these in your business.",
     ],
   },
 
