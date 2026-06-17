@@ -19,6 +19,11 @@ export default function CaseStudies() {
             <p className="mt-6 body-lg">{placeholder}</p>
           ) : null}
         </div>
+        {cases.length > 0 ? (
+          <div className="prose-x mt-8">
+            <div className="border-t border-border/50" />
+          </div>
+        ) : null}
 
         {cases.length > 0 ? (
           <div className="mt-16 space-y-16 md:mt-20 md:space-y-20">

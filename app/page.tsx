@@ -13,8 +13,8 @@ export default function Page() {
         <Hero />
         <Proof />
         <TotalRevenue />
-        <Receipts />
         <CaseStudies />
+        <Receipts />
         <FinalCTA />
       </main>
       <Footer />
