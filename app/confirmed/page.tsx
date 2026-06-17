@@ -3,6 +3,8 @@ import ConfirmationHero from "@/components/ConfirmationHero";
 import Requirements from "@/components/Requirements";
 import Proof from "@/components/Proof";
 import TotalRevenue from "@/components/TotalRevenue";
+import CaseStudies from "@/components/CaseStudies";
+import Receipts from "@/components/Receipts";
 import Footer from "@/components/Footer";
 import { site } from "@/lib/site";
 
@@ -32,6 +34,8 @@ export default function ConfirmedPage() {
         {/* Results — reuses the home-page proof + revenue sections. */}
         <Proof />
         <TotalRevenue />
+        <CaseStudies />
+        <Receipts />
       </main>
       <Footer />
     </>
