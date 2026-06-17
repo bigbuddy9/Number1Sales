@@ -131,6 +131,12 @@ export const site = {
           { label: "Deals Closed", value: "+67%", detail: "51 → 85 / mo" },
           { label: "Close Rate", value: "+6 pts", detail: "25% → 31%" },
         ],
+        screenshots: [
+          { src: "/case-studies/iinergy-revenue.png", alt: "iInergy — monthly revenue growth" },
+          { src: "/case-studies/iinergy-close-rate.png", alt: "iInergy — close rate improvement" },
+          { src: "/case-studies/iinergy-deals.png", alt: "iInergy — total deals closed" },
+          { src: "/case-studies/iinergy-kw.png", alt: "iInergy — total kW sold" },
+        ],
       },
       {
         client: "Limitless Solar Solutions",
@@ -140,6 +146,12 @@ export const site = {
           { label: "kW Sold", value: "+84%", detail: "410 → 755 kW" },
           { label: "Deals Closed", value: "+82%", detail: "34 → 62 / mo" },
           { label: "Close Rate", value: "+6 pts", detail: "23% → 29%" },
+        ],
+        screenshots: [
+          { src: "/case-studies/limitless-revenue.png", alt: "Limitless Solar — monthly revenue growth" },
+          { src: "/case-studies/limitless-close-rate.png", alt: "Limitless Solar — close rate improvement" },
+          { src: "/case-studies/limitless-deals.png", alt: "Limitless Solar — total deals closed" },
+          { src: "/case-studies/limitless-kw.png", alt: "Limitless Solar — total kW sold" },
         ],
       },
       {
@@ -151,11 +163,18 @@ export const site = {
           { label: "Deals Closed", value: "+81%", detail: "31 → 56 / mo" },
           { label: "Close Rate", value: "+6 pts", detail: "21% → 27%" },
         ],
+        screenshots: [
+          { src: "/case-studies/eastcoast-revenue.png", alt: "East Coast Solar — monthly revenue growth" },
+          { src: "/case-studies/eastcoast-close-rate.png", alt: "East Coast Solar — close rate improvement" },
+          { src: "/case-studies/eastcoast-deals.png", alt: "East Coast Solar — total deals closed" },
+          { src: "/case-studies/eastcoast-kw.png", alt: "East Coast Solar — total kW sold" },
+        ],
       },
     ] as Array<{
       client: string;
       timeframe: string;
       stats: Array<{ label: string; value: string; detail: string }>;
+      screenshots: Array<{ src: string; alt: string }>;
     }>,
   },
 
