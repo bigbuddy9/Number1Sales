@@ -43,6 +43,7 @@ export default function NoSkipPlayer({
   const autoStartedRef = useRef(false);
 
   const [playing, setPlaying] = useState(false);
+  const [ended, setEnded] = useState(false);
   const [unmuted, setUnmuted] = useState(false);
   const [muted, setMuted] = useState(true);
   const [duration, setDuration] = useState(0);
@@ -231,8 +232,19 @@ export default function NoSkipPlayer({
         preload="auto"
         onClick={unmuted ? togglePlay : undefined}
         onCanPlay={onCanPlay}
-        onPlay={() => setPlaying(true)}
+        onPlay={() => {
+          setPlaying(true);
+          setEnded(false);
+        }}
         onPause={() => setPlaying(false)}
+        onEnded={() => {
+          // Avoid freezing on the (ugly) last frame: reset to the start and
+          // show a clean replay end screen.
+          const v = videoRef.current;
+          if (v) v.currentTime = 0;
+          setPlaying(false);
+          setEnded(true);
+        }}
         onTimeUpdate={onTimeUpdate}
         onSeeking={guardSeek}
         onSeeked={guardSeek}
@@ -265,8 +277,8 @@ export default function NoSkipPlayer({
         </button>
       ) : null}
 
-      {/* Center play overlay (after unmute, when paused). */}
-      {unmuted && !playing ? (
+      {/* Center play overlay (after unmute, when paused mid-video). */}
+      {unmuted && !playing && !ended ? (
         <button
           type="button"
           onClick={togglePlay}
@@ -278,6 +290,40 @@ export default function NoSkipPlayer({
               <path d="M8 5v14l11-7L8 5Z" />
             </svg>
           </span>
+        </button>
+      ) : null}
+
+      {/* End screen — clean replay card instead of freezing on the last frame. */}
+      {ended ? (
+        <button
+          type="button"
+          onClick={() => {
+            const v = videoRef.current;
+            if (!v) return;
+            v.currentTime = 0;
+            setEnded(false);
+            v.play().catch(() => {});
+          }}
+          className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-bg/95 text-white transition hover:bg-bg"
+          aria-label="Replay video"
+        >
+          <span className="flex h-[72px] w-[72px] items-center justify-center rounded-full bg-white/12 ring-1 ring-white/40 backdrop-blur-md transition group-hover:scale-105">
+            <svg
+              width="28"
+              height="28"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden
+            >
+              <path d="M3 12a9 9 0 1 0 3-6.7L3 8" />
+              <path d="M3 3v5h5" />
+            </svg>
+          </span>
+          <span className="text-sm font-medium tracking-wide text-white/95">Replay</span>
         </button>
       ) : null}
 
