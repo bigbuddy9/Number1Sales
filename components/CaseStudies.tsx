@@ -19,7 +19,7 @@ export default function CaseStudies() {
             <p className="mt-6 body-lg">{placeholder}</p>
           ) : (
             <p className="mt-6 body-lg">
-              Verified data on the effectiveness of the Scale Solar Blueprint when installed in a business.
+              Verified data showcasing the effectiveness of the ScaleSolar Blueprint when integrated into residential solar businesses.
             </p>
           )}
         </div>
