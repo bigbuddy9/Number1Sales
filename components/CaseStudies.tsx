@@ -19,15 +19,10 @@ export default function CaseStudies() {
             <p className="mt-6 body-lg">{placeholder}</p>
           ) : (
             <p className="mt-6 body-lg">
-              Three solar companies. Real data, verified results. This is what happens when the system gets installed.
+              Verified data on the effectiveness of the Scale Solar Blueprint when installed in a business.
             </p>
           )}
         </div>
-        {cases.length > 0 ? (
-          <div className="prose-x mt-8">
-            <div className="border-t border-border/50" />
-          </div>
-        ) : null}
 
         {cases.length > 0 ? (
           <div className="mt-16 space-y-16 md:mt-20 md:space-y-20">
