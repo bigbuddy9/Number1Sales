@@ -25,12 +25,7 @@ export default function CaseStudies() {
             {cases.map((c) => (
               <article key={c.client} className="prose-x">
                 {/* Header row */}
-                <div className="flex flex-wrap items-start justify-between gap-3">
-                  <h3 className="h3 text-ink">{c.client}</h3>
-                  <span className="rounded-full border border-accent/25 bg-accent/10 px-3 py-1 text-sm font-medium text-accent">
-                    {c.timeframe}
-                  </span>
-                </div>
+                <h3 className="h3 text-ink">{c.client}</h3>
 
                 {/* Stats row */}
                 <div className="mt-4 grid grid-cols-2 gap-4 sm:grid-cols-4">
@@ -58,6 +53,7 @@ export default function CaseStudies() {
                         alt={s.alt}
                         images={allImages}
                         index={i}
+                        aspect="aspect-[4/3]"
                       />
                     );
                   })}
