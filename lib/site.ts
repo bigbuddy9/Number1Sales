@@ -131,29 +131,39 @@ export const site = {
     placeholder: "Client case studies — first cohort underway, results landing soon.",
     cases: [
       {
-        header: "iInergy",
         client: "iInergy",
-        keyResult: "+69% kW sold · +67% deals · +65% revenue in 3 months",
-        quote: "Revenue went from $1.05M to $1.73M per month. The system works.",
+        timeframe: "3 months",
+        stats: [
+          { label: "Monthly Revenue", value: "+65%", detail: "$1.05M → $1.73M" },
+          { label: "kW Sold", value: "+69%", detail: "710 → 1,200 kW" },
+          { label: "Deals Closed", value: "+67%", detail: "51 → 85 / mo" },
+          { label: "Close Rate", value: "+6 pts", detail: "25% → 31%" },
+        ],
       },
       {
-        header: "Limitless Solar Solutions",
         client: "Limitless Solar Solutions",
-        keyResult: "+91% revenue · +84% kW sold · +82% deals in 2 months",
-        quote: "From $515K to $985K in monthly revenue in under 60 days.",
+        timeframe: "2 months",
+        stats: [
+          { label: "Monthly Revenue", value: "+91%", detail: "$515K → $985K" },
+          { label: "kW Sold", value: "+84%", detail: "410 → 755 kW" },
+          { label: "Deals Closed", value: "+82%", detail: "34 → 62 / mo" },
+          { label: "Close Rate", value: "+6 pts", detail: "23% → 29%" },
+        ],
       },
       {
-        header: "East Coast Solar Solutions",
         client: "East Coast Solar Solutions",
-        keyResult: "+101% revenue · +98% kW sold · +81% deals in 3 months",
-        quote: "Monthly revenue doubled — from $378K to $760K — in 3 months.",
+        timeframe: "3 months",
+        stats: [
+          { label: "Monthly Revenue", value: "+101%", detail: "$378K → $760K" },
+          { label: "kW Sold", value: "+98%", detail: "310 → 614 kW" },
+          { label: "Deals Closed", value: "+81%", detail: "31 → 56 / mo" },
+          { label: "Close Rate", value: "+6 pts", detail: "21% → 27%" },
+        ],
       },
     ] as Array<{
-      header: string;
       client: string;
-      keyResult: string;
-      quote?: string;
-      screenshot?: { src: string; alt: string };
+      timeframe: string;
+      stats: Array<{ label: string; value: string; detail: string }>;
     }>,
   },
 
