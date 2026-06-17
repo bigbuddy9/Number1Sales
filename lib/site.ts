@@ -129,13 +129,41 @@ export const site = {
   caseStudies: {
     header: "Case Studies",
     placeholder: "Client case studies — first cohort underway, results landing soon.",
-    // Future: each entry becomes a card. Keeping the structure ready.
-    cases: [] as Array<{
-      header: string;
+    cases: [
+      {
+        client: "iInergy",
+        timeframe: "3 months",
+        stats: [
+          { label: "Monthly Revenue", value: "+65%", detail: "$1.05M → $1.73M" },
+          { label: "kW Sold", value: "+69%", detail: "710 → 1,200 kW" },
+          { label: "Deals Closed", value: "+67%", detail: "51 → 85 / mo" },
+          { label: "Close Rate", value: "+6 pts", detail: "25% → 31%" },
+        ],
+      },
+      {
+        client: "Limitless Solar Solutions",
+        timeframe: "2 months",
+        stats: [
+          { label: "Monthly Revenue", value: "+91%", detail: "$515K → $985K" },
+          { label: "kW Sold", value: "+84%", detail: "410 → 755 kW" },
+          { label: "Deals Closed", value: "+82%", detail: "34 → 62 / mo" },
+          { label: "Close Rate", value: "+6 pts", detail: "23% → 29%" },
+        ],
+      },
+      {
+        client: "East Coast Solar Solutions",
+        timeframe: "3 months",
+        stats: [
+          { label: "Monthly Revenue", value: "+101%", detail: "$378K → $760K" },
+          { label: "kW Sold", value: "+98%", detail: "310 → 614 kW" },
+          { label: "Deals Closed", value: "+81%", detail: "31 → 56 / mo" },
+          { label: "Close Rate", value: "+6 pts", detail: "21% → 27%" },
+        ],
+      },
+    ] as Array<{
       client: string;
-      keyResult: string;
-      quote?: string;
-      screenshot?: { src: string; alt: string };
+      timeframe: string;
+      stats: Array<{ label: string; value: string; detail: string }>;
     }>,
   },
 
@@ -143,58 +171,6 @@ export const site = {
     title: "Book an Advisory Session",
     tagline: "Proven Formula. Proven Results.",
     body: "Copy and paste the #1 solar sales system directly into your business.",
-  },
-
-  // Post-booking confirmation page, served at /confirmed.
-  // Point your Cal.com event type's "Redirect on booking" URL here:
-  // https://scalesolar.co/confirmed
-  confirmation: {
-    eyebrow: "Booking confirmed",
-    h1: "Must watch this video before your call",
-    // Small label shown directly above the video player.
-    videoTitle: "Your pre-call briefing",
-    // No-skip player source: a Cloudflare Stream HLS manifest (.m3u8) or an
-    // .mp4 URL. Raw MP4 from R2 = exact source quality, no re-encode.
-    videoSrc:
-      "https://pub-5e2c7df6c10c4ad08bc1a296cd537a28.r2.dev/Post%20Call%20Confirmation%20Video%20-%20SCALE%20SOLAR-esv2-80p-bg-10p-music-10p.mp4",
-    // Poster image (path in /public or absolute URL) shown before play.
-    // Empty = no Stream dependency (the video autoplays muted anyway).
-    videoThumbnail: "" as string,
-    // Fraction of width to keep, to crop baked-in black side bars (1 = none).
-    videoCrop: 1,
-    // WebVTT subtitles file (path in /public). Empty = no captions track.
-    captionsSrc: "/captions/confirmation.vtt" as string,
-    // Show subtitles by default (they autoplay muted, so captions help).
-    captionsDefault: true,
-    requirements: {
-      header: "How to get the most from your call.",
-      note: "Before we jump on, make sure you've got:",
-      items: [
-        {
-          title: "A laptop — not your phone",
-          body: "We'll be sharing screens and working through your funnel together. A phone won't cut it.",
-        },
-        {
-          title: "A notepad, or a way to take notes",
-          body: "You'll walk away with clear, actionable steps — capture them as we go.",
-        },
-        {
-          title: "A quiet room, no distractions",
-          body: "Somewhere you can focus and talk freely for the full session.",
-        },
-        {
-          title: "45–60 minutes blocked out",
-          body: "Completely free, nothing either side. Show up ready, not half in.",
-        },
-        {
-          title: "Anyone this decision affects",
-          body: "If someone else weighs in on this, have them on the call with you.",
-        },
-      ],
-      footer: "Show up ready and we'll make it count.",
-    },
-    resultsHeader: "While you wait — here's what this system produces.",
-    resultsSub: "Not theory. This is the exact system we'll walk through on your call.",
   },
 
   footer: {
