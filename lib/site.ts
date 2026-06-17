@@ -119,11 +119,9 @@ export const site = {
   receipts: {
     header: "Receipts.",
     paragraphs: [
-      "Every number on this page is verifiable. Every screenshot is from a real company meeting. Every record, every #1 finish, every dollar — direct evidence, not claims.",
-      "These results weren't down to talent. They came from executing a clear, repeatable process — one built around meticulously optimising every stage of the sales cycle: appointments, follow-ups, closes, referrals.",
-      "Pure logic. If you follow the same framework against the same type of leads, you get the same output. That's not a pitch — that's how systems work.",
-      "The clearest proof: my cousin Daniel. Never sold anything in his life. I handed him the exact same system, and he immediately outperformed every other rep in the company except me.",
-      "Zero prior experience. Immediate results. The system did the work.",
+      "Every record, every #1 finish, every dollar, every client result — direct evidence, not claims.",
+      "These results weren't down to talent. They came from executing a clear, repeatable process built around optimising every stage of the solar sales cycle from start to finish.",
+      "Pure logic. If you follow the same framework, you get the same output.",
     ],
   },
 
