@@ -194,6 +194,24 @@ export default function NoSkipPlayer({
     }
   }, [hasCaptions, captionsOn]);
 
+  // Cover the video a few frames before the true end so it never paints the
+  // unflattering final freeze frame. Audio keeps playing underneath until the
+  // real `ended` event resets it. rAF gives frame-level precision.
+  useEffect(() => {
+    if (!playing || ended) return;
+    let raf = 0;
+    const tick = () => {
+      const v = videoRef.current;
+      if (v && v.duration && v.currentTime >= v.duration - 0.12) {
+        setEnded(true);
+        return;
+      }
+      raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [playing, ended]);
+
   const toggleFullscreen = () => {
     const el = videoRef.current?.parentElement;
     if (!el) return;
@@ -304,7 +322,7 @@ export default function NoSkipPlayer({
             setEnded(false);
             v.play().catch(() => {});
           }}
-          className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-bg/95 text-white transition hover:bg-bg"
+          className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-3 bg-bg text-white"
           aria-label="Replay video"
         >
           <span className="flex h-[72px] w-[72px] items-center justify-center rounded-full bg-white/12 ring-1 ring-white/40 backdrop-blur-md transition group-hover:scale-105">
