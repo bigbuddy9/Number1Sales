@@ -63,7 +63,7 @@ export default function CaseStudies() {
                         images={allImages}
                         index={i}
                         fit="contain"
-                        aspect="aspect-[4/3]"
+                        aspect="aspect-[3/2]"
                       />
                     );
                   })}
