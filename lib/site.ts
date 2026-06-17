@@ -129,8 +129,26 @@ export const site = {
   caseStudies: {
     header: "Case Studies",
     placeholder: "Client case studies — first cohort underway, results landing soon.",
-    // Future: each entry becomes a card. Keeping the structure ready.
-    cases: [] as Array<{
+    cases: [
+      {
+        header: "iInergy",
+        client: "iInergy",
+        keyResult: "+69% kW sold · +67% deals · +65% revenue in 3 months",
+        quote: "Revenue went from $1.05M to $1.73M per month. The system works.",
+      },
+      {
+        header: "Limitless Solar Solutions",
+        client: "Limitless Solar Solutions",
+        keyResult: "+91% revenue · +84% kW sold · +82% deals in 2 months",
+        quote: "From $515K to $985K in monthly revenue in under 60 days.",
+      },
+      {
+        header: "East Coast Solar Solutions",
+        client: "East Coast Solar Solutions",
+        keyResult: "+101% revenue · +98% kW sold · +81% deals in 3 months",
+        quote: "Monthly revenue doubled — from $378K to $760K — in 3 months.",
+      },
+    ] as Array<{
       header: string;
       client: string;
       keyResult: string;
