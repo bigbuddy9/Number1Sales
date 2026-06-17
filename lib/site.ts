@@ -6,21 +6,13 @@ export const site = {
   brand: "Scale Solar",
   domain: "scalesolar.co",
   bookingUrl: "https://cal.com/team/scale-solar/advisory-session",
-  // Used by the inline Cal.com embeds (under hero + final CTA).
-  // Format: "username/event-slug" or "team/team-slug/event-slug".
   calLink: "team/scale-solar/advisory-session",
-  // Plausible domain — leave as the production domain. Script is injected
-  // unconditionally; if no Plausible account exists for this domain yet,
-  // the requests are silently dropped. Add the domain at plausible.io when ready.
   plausibleDomain: "scalesolar.co",
 
   hero: {
     h1: "Implement the #1 solar sales system into your business.",
     sub: "Proven to generate over $100m / year, a replicable process you can plug directly into your company today to 2-5x your revenue, fast.",
-    // No-skip player source: a Cloudflare Stream HLS manifest (.m3u8) or an
-    // .mp4 URL. Leave empty to show the placeholder.
     videoSrc: "" as string,
-    // Poster image (path in /public or absolute URL) shown before play.
     videoThumbnail: "" as string,
     cta: "Book a Call",
   },
@@ -171,6 +163,47 @@ export const site = {
     title: "Book an Advisory Session",
     tagline: "Proven Formula. Proven Results.",
     body: "Copy and paste the #1 solar sales system directly into your business.",
+  },
+
+  confirmation: {
+    eyebrow: "Booking confirmed",
+    h1: "Must watch this video before your call",
+    videoTitle: "Your pre-call briefing",
+    videoSrc:
+      "https://pub-5e2c7df6c10c4ad08bc1a296cd537a28.r2.dev/Post%20Call%20Confirmation%20Video%20-%20SCALE%20SOLAR-esv2-80p-bg-10p-music-10p.mp4",
+    videoThumbnail: "" as string,
+    videoCrop: 1,
+    captionsSrc: "/captions/confirmation.vtt" as string,
+    captionsDefault: true,
+    requirements: {
+      header: "How to get the most from your call.",
+      note: "Before we jump on, make sure you've got:",
+      items: [
+        {
+          title: "A laptop — not your phone",
+          body: "We'll be sharing screens and working through your funnel together. A phone won't cut it.",
+        },
+        {
+          title: "A notepad, or a way to take notes",
+          body: "You'll walk away with clear, actionable steps — capture them as we go.",
+        },
+        {
+          title: "A quiet room, no distractions",
+          body: "Somewhere you can focus and talk freely for the full session.",
+        },
+        {
+          title: "45–60 minutes blocked out",
+          body: "Completely free, nothing either side. Show up ready, not half in.",
+        },
+        {
+          title: "Anyone this decision affects",
+          body: "If someone else weighs in on this, have them on the call with you.",
+        },
+      ],
+      footer: "Show up ready and we'll make it count.",
+    },
+    resultsHeader: "While you wait — here's what this system produces.",
+    resultsSub: "Not theory. This is the exact system we'll walk through on your call.",
   },
 
   footer: {
